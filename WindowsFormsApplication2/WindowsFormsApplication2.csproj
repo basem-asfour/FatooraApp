@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB7619F5-FA8C-4EF6-9DBD-95B9F2256FE8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsFormsApplication2</RootNamespace>
+    <AssemblyName>WindowsFormsApplication2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\prog\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="MigraDoc.DocumentObjectModel-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.Rendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.RtfRendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp.Charting-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="adham_testDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>adham_testDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BL\cls_cstmrs.cs" />
+    <Compile Include="BL\cls_elbank.cs" />
+    <Compile Include="BL\cls_expenses.cs" />
+    <Compile Include="BL\cls_mndobeen.cs" />
+    <Compile Include="BL\cls_mwrdeen.cs" />
+    <Compile Include="BL\cls_orders.cs" />
+    <Compile Include="BL\cls_products.cs" />
+    <Compile Include="BL\cls_purchases.cs" />
+    <Compile Include="BL\cls_stores.cs" />
+    <Compile Include="BL\RowComparer.cs" />
+    <Compile Include="DAL\DATAaccesslayer.cs" />
+    <Compile Include="BL\cls_login.cs" />
+    <Compile Include="PL\elbank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\elbank.Designer.cs">
+      <DependentUpon>elbank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_add_cstmr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_add_cstmr.Designer.cs">
+      <DependentUpon>frm_add_cstmr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_add_fwateer_mwrd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_add_fwateer_mwrd.Designer.cs">
+      <DependentUpon>frm_add_fwateer_mwrd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_add_md5al.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_add_md5al.Designer.cs">
+      <DependentUpon>frm_add_md5al.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_add_product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_add_product.Designer.cs">
+      <DependentUpon>frm_add_product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_add_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_add_user.Designer.cs">
+      <DependentUpon>frm_add_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_all_cstmrs_report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_all_cstmrs_report.Designer.cs">
+      <DependentUpon>frm_all_cstmrs_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_all_fwateer_mwrdeen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_all_fwateer_mwrdeen.Designer.cs">
+      <DependentUpon>frm_all_fwateer_mwrdeen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_all_mndb_prds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_all_mndb_prds.Designer.cs">
+      <DependentUpon>frm_all_mndb_prds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_all_mwrdeen_report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_all_mwrdeen_report.Designer.cs">
+      <DependentUpon>frm_all_mwrdeen_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_backup.Designer.cs">
+      <DependentUpon>frm_backup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_catogries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_catogries.Designer.cs">
+      <DependentUpon>frm_catogries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_catogry_report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_catogry_report.Designer.cs">
+      <DependentUpon>frm_catogry_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_change_company_name.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_change_company_name.Designer.cs">
+      <DependentUpon>frm_change_company_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_change_order_date.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_change_order_date.Designer.cs">
+      <DependentUpon>frm_change_order_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_change_store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_change_store.Designer.cs">
+      <DependentUpon>frm_change_store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_corrupted_prd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_corrupted_prd.Designer.cs">
+      <DependentUpon>frm_corrupted_prd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_cstmrs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_cstmrs.Designer.cs">
+      <DependentUpon>frm_cstmrs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_cstmrs_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_cstmrs_list.Designer.cs">
+      <DependentUpon>frm_cstmrs_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_cstmrs_list_forEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_cstmrs_list_forEdit.Designer.cs">
+      <DependentUpon>frm_cstmrs_list_forEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_cstmr_details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_cstmr_details.Designer.cs">
+      <DependentUpon>frm_cstmr_details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_cstmr_pays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_cstmr_pays.Designer.cs">
+      <DependentUpon>frm_cstmr_pays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_cstmr_report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_cstmr_report.Designer.cs">
+      <DependentUpon>frm_cstmr_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_deleted_products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_deleted_products.Designer.cs">
+      <DependentUpon>frm_deleted_products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_edit_fweer_mwrd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_edit_fweer_mwrd.Designer.cs">
+      <DependentUpon>frm_edit_fweer_mwrd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_edit_mndob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_edit_mndob.Designer.cs">
+      <DependentUpon>frm_edit_mndob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_expenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_expenses.Designer.cs">
+      <DependentUpon>frm_expenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_from_mwrdeen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_from_mwrdeen.Designer.cs">
+      <DependentUpon>frm_from_mwrdeen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_gard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_gard.Designer.cs">
+      <DependentUpon>frm_gard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_gardTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_gardTwo.Designer.cs">
+      <DependentUpon>frm_gardTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_main.Designer.cs">
+      <DependentUpon>frm_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_manage_money.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_manage_money.Designer.cs">
+      <DependentUpon>frm_manage_money.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_manage_mrtg3_mbe3at.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_manage_mrtg3_mbe3at.Designer.cs">
+      <DependentUpon>frm_manage_mrtg3_mbe3at.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mndopeen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mndopeen.Designer.cs">
+      <DependentUpon>frm_mndopeen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mony_reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mony_reports.Designer.cs">
+      <DependentUpon>frm_mony_reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mordeen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mordeen.Designer.cs">
+      <DependentUpon>frm_mordeen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mrtg3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mrtg3.Designer.cs">
+      <DependentUpon>frm_mrtg3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mrtg3_mshtriat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mrtg3_mshtriat.Designer.cs">
+      <DependentUpon>frm_mrtg3_mshtriat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_msdd_mtpakii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_msdd_mtpakii.Designer.cs">
+      <DependentUpon>frm_msdd_mtpakii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mwrdeen_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mwrdeen_list.Designer.cs">
+      <DependentUpon>frm_mwrdeen_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mwrd_pays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mwrd_pays.Designer.cs">
+      <DependentUpon>frm_mwrd_pays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_mwrd_report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_mwrd_report.Designer.cs">
+      <DependentUpon>frm_mwrd_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Frm_orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Frm_orders.Designer.cs">
+      <DependentUpon>Frm_orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_orders_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_orders_list.Designer.cs">
+      <DependentUpon>frm_orders_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_prd_first_rseed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_prd_first_rseed.Designer.cs">
+      <DependentUpon>frm_prd_first_rseed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_products.Designer.cs">
+      <DependentUpon>frm_products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_products_again.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_products_again.Designer.cs">
+      <DependentUpon>frm_products_again.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_products_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_products_list.Designer.cs">
+      <DependentUpon>frm_products_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_product_card.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_product_card.Designer.cs">
+      <DependentUpon>frm_product_card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_product_mrtg3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_product_mrtg3.Designer.cs">
+      <DependentUpon>frm_product_mrtg3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_profit_month.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_profit_month.Designer.cs">
+      <DependentUpon>frm_profit_month.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_review.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_review.Designer.cs">
+      <DependentUpon>frm_review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_single_cstmr_pay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_single_cstmr_pay.Designer.cs">
+      <DependentUpon>frm_single_cstmr_pay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_stores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_stores.Designer.cs">
+      <DependentUpon>frm_stores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_users.Designer.cs">
+      <DependentUpon>frm_users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_view_order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_view_order.Designer.cs">
+      <DependentUpon>frm_view_order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\restore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\restore.Designer.cs">
+      <DependentUpon>restore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="roundBtn\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\all_csrmrs_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>all_csrmrs_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\all_cstmrs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>all_cstmrs.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\frm_rpt_product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT\frm_rpt_product.Designer.cs">
+      <DependentUpon>frm_rpt_product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT\rpt_all_product.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_all_product.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\rpt_orders.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_orders.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\rpt_prd_single.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_prd_single.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="PL\elbank.resx">
+      <DependentUpon>elbank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_add_cstmr.resx">
+      <DependentUpon>frm_add_cstmr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_add_fwateer_mwrd.resx">
+      <DependentUpon>frm_add_fwateer_mwrd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_add_md5al.resx">
+      <DependentUpon>frm_add_md5al.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_add_product.resx">
+      <DependentUpon>frm_add_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_add_user.resx">
+      <DependentUpon>frm_add_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_all_cstmrs_report.resx">
+      <DependentUpon>frm_all_cstmrs_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_all_mndb_prds.resx">
+      <DependentUpon>frm_all_mndb_prds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_all_mwrdeen_report.resx">
+      <DependentUpon>frm_all_mwrdeen_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_backup.resx">
+      <DependentUpon>frm_backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_catogries.resx">
+      <DependentUpon>frm_catogries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_catogry_report.resx">
+      <DependentUpon>frm_catogry_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_change_company_name.resx">
+      <DependentUpon>frm_change_company_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_change_order_date.resx">
+      <DependentUpon>frm_change_order_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_change_store.resx">
+      <DependentUpon>frm_change_store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_corrupted_prd.resx">
+      <DependentUpon>frm_corrupted_prd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_cstmrs.resx">
+      <DependentUpon>frm_cstmrs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_cstmrs_list.resx">
+      <DependentUpon>frm_cstmrs_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_cstmrs_list_forEdit.resx">
+      <DependentUpon>frm_cstmrs_list_forEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_cstmr_details.resx">
+      <DependentUpon>frm_cstmr_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_cstmr_pays.resx">
+      <DependentUpon>frm_cstmr_pays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_cstmr_report.resx">
+      <DependentUpon>frm_cstmr_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_deleted_products.resx">
+      <DependentUpon>frm_deleted_products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_edit_fweer_mwrd.resx">
+      <DependentUpon>frm_edit_fweer_mwrd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_edit_mndob.resx">
+      <DependentUpon>frm_edit_mndob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_expenses.resx">
+      <DependentUpon>frm_expenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_from_mwrdeen.resx">
+      <DependentUpon>frm_from_mwrdeen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_gard.resx">
+      <DependentUpon>frm_gard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_gardTwo.resx">
+      <DependentUpon>frm_gardTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_main.resx">
+      <DependentUpon>frm_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_manage_money.resx">
+      <DependentUpon>frm_manage_money.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_manage_mrtg3_mbe3at.resx">
+      <DependentUpon>frm_manage_mrtg3_mbe3at.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mndopeen.resx">
+      <DependentUpon>frm_mndopeen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mony_reports.resx">
+      <DependentUpon>frm_mony_reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mordeen.resx">
+      <DependentUpon>frm_mordeen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mrtg3.resx">
+      <DependentUpon>frm_mrtg3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mrtg3_mshtriat.resx">
+      <DependentUpon>frm_mrtg3_mshtriat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_msdd_mtpakii.resx">
+      <DependentUpon>frm_msdd_mtpakii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mwrdeen_list.resx">
+      <DependentUpon>frm_mwrdeen_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mwrd_pays.resx">
+      <DependentUpon>frm_mwrd_pays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_mwrd_report.resx">
+      <DependentUpon>frm_mwrd_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Frm_orders.resx">
+      <DependentUpon>Frm_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_orders_list.resx">
+      <DependentUpon>frm_orders_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_prd_first_rseed.resx">
+      <DependentUpon>frm_prd_first_rseed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_products.resx">
+      <DependentUpon>frm_products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_products_again.resx">
+      <DependentUpon>frm_products_again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_products_list.resx">
+      <DependentUpon>frm_products_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_product_card.resx">
+      <DependentUpon>frm_product_card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_product_mrtg3.resx">
+      <DependentUpon>frm_product_mrtg3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_profit_month.resx">
+      <DependentUpon>frm_profit_month.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_review.resx">
+      <DependentUpon>frm_review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_single_cstmr_pay.resx">
+      <DependentUpon>frm_single_cstmr_pay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_stores.resx">
+      <DependentUpon>frm_stores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_users.resx">
+      <DependentUpon>frm_users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frm_view_order.resx">
+      <DependentUpon>frm_view_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\restore.resx">
+      <DependentUpon>restore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RPT\all_csrmrs_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>all_csrmrs_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\all_cstmrs.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>all_cstmrs.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\frm_rpt_product.resx">
+      <DependentUpon>frm_rpt_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\rpt_all_product.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_all_product.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\rpt_orders.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_orders.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\rpt_prd_single.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_prd_single.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="adham_testDataSet.xsc">
+      <DependentUpon>adham_testDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="adham_testDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>adham_testDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="adham_testDataSet.xss">
+      <DependentUpon>adham_testDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\101.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WallpaperStudio10-68377.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WallpaperStudio10-683771.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\web-developer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PIP-Lock-Screen-Screenshot-1-1-348x215.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7907f66f-e9d4-41f9-8577-cdf45bdcb104.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-clipart-money-management-expense-android-angle-personal-finance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-clipart-out-of-pocket-expense-health-insurance-money-deductible-asthma-and-allergy-friendly-payment-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-vector-salary-icon-png-image_4090528.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\تنزيل.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\تنزيل %281%29.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\تنزيل.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-check-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-in-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-out-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Product-documentation-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Balance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Package-delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Accounting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove-item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male-user-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ManageUsers-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cash-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Personnel-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Admin-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-remove-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money-icon %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money-Increase-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coins-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ManageUsers-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck-icon %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-remove1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male-user-add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-edit-delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apps-Dialog-Shutdown-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-accept1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close-icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dollar-stats-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\increase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove-item1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-add3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inventory-maintenance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\budget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checklist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Package-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Package-add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pencil-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Package-delete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apps-printer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Package-download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close-icon3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\windows-7-photo-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checklist1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apps-Windows-Live-Mesh-Metro-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inventory-maintenance1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ManageUsers - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55555.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-check-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Register-icon - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Product-documentation-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-check-icon - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male-user-add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male-user-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male-user-edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticket-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\communication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-bag-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-full.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart-remove2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inventory-maintenance2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\decrease.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\increase1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticket-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coupon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Accounting1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-48.png" />
+    <None Include="Resources\icons8-print-48.png" />
+    <None Include="Resources\icons8-page-setup-48.png" />
+    <None Include="Resources\icons8-delete-48.png" />
+    <None Include="Resources\icons8-edit-48.png" />
+    <None Include="Resources\icons8-plus-48.png" />
+    <None Include="Resources\icons8-e-magazine-48.png" />
+    <None Include="Resources\icons8-trash-48.png" />
+    <None Include="Resources\icons8-delete-481.png" />
+    <None Include="Resources\icons8-refresh-48.png" />
+    <None Include="Resources\icons8-search-48.png" />
+    <None Include="Resources\icons8-done-48.png" />
+    <None Include="Resources\icons8-money-circulation-48.png" />
+    <None Include="Resources\icons8-users-48.png" />
+    <None Include="Resources\icons8-delivery-96.png" />
+    <None Include="Resources\icons8-delivery-48.png" />
+    <None Include="Resources\icons8-money-bag-40.png" />
+    <None Include="Resources\icons8-add-shopping-cart-48.png" />
+    <None Include="Resources\icons8-box-settings-48.png" />
+    <None Include="Resources\icons8-flow-chart-48.png" />
+    <None Include="Resources\icons8-clear-shopping-cart-48.png" />
+    <None Include="Resources\icons8-e-commerce-48.png" />
+    <None Include="Resources\icons8-positive-dynamic-48.png" />
+    <None Include="Resources\icons8-menu-48.png" />
+    <None Include="Resources\icons8-palestine-48.png" />
+    <None Include="Resources\icons8-life-cycle-96.png" />
+    <None Include="Resources\icons8-click-&amp;-collect-48.png" />
+    <None Include="Resources\icons8-barcode-reader-48.png" />
+    <None Include="Resources\icons8-barcode-48.png" />
+    <Content Include="Resources\logo_trans.ico" />
+    <None Include="Resources\logo_trans1.ico" />
+    <None Include="Resources\logo_trans_ElShaker.png" />
+    <Content Include="Resources\MohandsLogo.jpeg" />
+    <None Include="Resources\MohandsLogo1.jpeg" />
+    <Content Include="Resources\MohandsUpperLogo.jpeg" />
+    <None Include="Resources\MohandsUpperLogo1.jpeg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
