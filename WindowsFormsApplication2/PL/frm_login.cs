@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -17,6 +18,34 @@ namespace WindowsFormsApplication2.PL
         public frm_login()
         {
             InitializeComponent();
+            ApplyModernTheme();
+        }
+
+        private void ApplyModernTheme()
+        {
+            // Apply modern theme to form
+            ModernTheme.StyleForm(this);
+            
+            // Style textboxes
+            ModernTheme.StyleTextBox(txtid);
+            ModernTheme.StyleTextBox(txtpwd);
+            
+            // Style buttons with modern theme
+            ModernTheme.StyleButton(btnlogin, ButtonStyle.Success);
+            ModernTheme.StyleButton(btncancel, ButtonStyle.Danger);
+            
+            // Style labels
+            ModernTheme.StyleLabel(label1, LabelStyle.Normal);
+            ModernTheme.StyleLabel(label2, LabelStyle.Normal);
+            ModernTheme.StyleLabel(label3, LabelStyle.Secondary);
+            ModernTheme.StyleLabel(label4, LabelStyle.Header);
+            
+            // Customize header label
+            label4.BackColor = ModernTheme.PrimaryColor;
+            label4.ForeColor = ModernTheme.TextLight;
+            
+            // Form styling
+            this.BackColor = ModernTheme.BackgroundMain;
         }
 
         private void label1_Click(object sender, EventArgs e)

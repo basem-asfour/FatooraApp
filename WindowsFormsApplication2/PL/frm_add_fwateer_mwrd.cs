@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -47,6 +48,8 @@ namespace WindowsFormsApplication2.PL
             dataGridView1.DataSource = purch.get_all_fatora_mwrd_purchases(mwrd.get_last_order_id_mwrd().Rows[0][0].ToString());
 
             //dataGridView1.DataSource = mwrd.get_all_fatora_mwrd_product(mwrd.get_last_order_id_mwrd().Rows[0][0].ToString());
+            
+            ApplyModernTheme();
         }
 
         //private void dgvproducts_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -200,6 +203,117 @@ namespace WindowsFormsApplication2.PL
             frm.ShowDialog();
         }
         
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style GroupBox
+            ModernTheme.StyleGroupBox(groupBox1);
+            groupBox1.BackColor = ModernTheme.BackgroundCard;
+            groupBox1.ForeColor = ModernTheme.TextPrimary;
+            
+            // Style DataGridView
+            ModernTheme.StyleDataGridView(dataGridView1);
+            
+            // Style TextBoxes
+            ModernTheme.StyleTextBox(txtmwrd_nme);
+            ModernTheme.StyleTextBox(id_mwrd_order);
+            ModernTheme.StyleTextBox(txt_value);
+            ModernTheme.StyleTextBox(txtmsdd);
+            ModernTheme.StyleTextBox(txtmtbki);
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+            
+            // Style DateTimePicker
+            StyleDateTimePickers();
+            
+            // Apply special styling
+            ApplySpecialStyling();
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label2, label3, label4, label5, label6 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                }
+            }
+            
+            // Special styling for paid amount label
+            if (label5 != null)
+            {
+                label5.BackColor = ModernTheme.BackgroundCard;
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Add items button
+            ModernTheme.StyleButton(button2, ButtonStyle.Success);
+            
+            // Confirm invoice button
+            ModernTheme.StyleButton(button3, ButtonStyle.Success);
+            
+            // Delete button
+            ModernTheme.StyleButton(button4, ButtonStyle.Danger);
+            
+            // Edit button
+            ModernTheme.StyleButton(button5, ButtonStyle.Secondary);
+            
+            // Refresh button
+            ModernTheme.StyleButton(button21, ButtonStyle.Primary);
+        }
+        
+        private void StyleDateTimePickers()
+        {
+            if (dateTimePicker1 != null)
+            {
+                dateTimePicker1.Font = new Font("Segoe UI", 10F);
+                dateTimePicker1.CalendarFont = new Font("Segoe UI", 10F);
+                dateTimePicker1.CalendarTitleBackColor = ModernTheme.PrimaryColor;
+                dateTimePicker1.CalendarTitleForeColor = ModernTheme.TextLight;
+            }
+        }
+        
+        private void ApplySpecialStyling()
+        {
+            // Style total value textbox
+            if (txt_value != null)
+            {
+                txt_value.BackColor = Color.FromArgb(230, 244, 241); // Light green
+                txt_value.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            }
+            
+            // Style remaining amount textbox
+            if (txtmtbki != null)
+            {
+                txtmtbki.BackColor = Color.FromArgb(248, 215, 218); // Light red
+                txtmtbki.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            }
+            
+            // Style readonly textboxes
+            if (id_mwrd_order != null && id_mwrd_order.ReadOnly)
+            {
+                id_mwrd_order.BackColor = Color.FromArgb(248, 249, 250); // Very light gray
+                id_mwrd_order.ForeColor = ModernTheme.TextSecondary;
+            }
+            
+            if (txtmwrd_nme != null && txtmwrd_nme.ReadOnly)
+            {
+                txtmwrd_nme.BackColor = Color.FromArgb(248, 249, 250); // Very light gray
+                txtmwrd_nme.ForeColor = ModernTheme.TextSecondary;
+            }
+        }
         }
 
         

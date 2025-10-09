@@ -47,78 +47,99 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 284);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label2.Location = new System.Drawing.Point(360, 271);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 16);
+            this.label2.Size = new System.Drawing.Size(120, 19);
             this.label2.TabIndex = 10;
-            this.label2.Text = "أقصي حساب سابق";
+            this.label2.Text = "أقصي حساب سابق:";
             // 
             // txtmax
             // 
-            this.txtmax.Location = new System.Drawing.Point(25, 281);
-            this.txtmax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtmax.BackColor = System.Drawing.Color.White;
+            this.txtmax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtmax.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtmax.Location = new System.Drawing.Point(30, 268);
+            this.txtmax.Margin = new System.Windows.Forms.Padding(5);
             this.txtmax.Name = "txtmax";
-            this.txtmax.Size = new System.Drawing.Size(295, 22);
+            this.txtmax.Size = new System.Drawing.Size(320, 25);
             this.txtmax.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(377, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label1.Location = new System.Drawing.Point(410, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.Size = new System.Drawing.Size(70, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "اسم العميل:";
             // 
             // txtcstnme
             // 
-            this.txtcstnme.Location = new System.Drawing.Point(25, 38);
-            this.txtcstnme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtcstnme.BackColor = System.Drawing.Color.White;
+            this.txtcstnme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcstnme.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtcstnme.Location = new System.Drawing.Point(30, 42);
+            this.txtcstnme.Margin = new System.Windows.Forms.Padding(5);
             this.txtcstnme.Name = "txtcstnme";
-            this.txtcstnme.Size = new System.Drawing.Size(340, 22);
+            this.txtcstnme.Size = new System.Drawing.Size(370, 25);
             this.txtcstnme.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 82);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label3.Location = new System.Drawing.Point(425, 85);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.Size = new System.Drawing.Size(55, 19);
             this.label3.TabIndex = 6;
-            this.label3.Text = "التليفون: ";
+            this.label3.Text = "التليفون:";
             // 
             // txtcstadrs
             // 
-            this.txtcstadrs.Location = new System.Drawing.Point(25, 119);
-            this.txtcstadrs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtcstadrs.BackColor = System.Drawing.Color.White;
+            this.txtcstadrs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcstadrs.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtcstadrs.Location = new System.Drawing.Point(30, 125);
+            this.txtcstadrs.Margin = new System.Windows.Forms.Padding(5);
             this.txtcstadrs.Multiline = true;
             this.txtcstadrs.Name = "txtcstadrs";
-            this.txtcstadrs.Size = new System.Drawing.Size(340, 73);
+            this.txtcstadrs.Size = new System.Drawing.Size(370, 75);
             this.txtcstadrs.TabIndex = 3;
             // 
             // txtcstpho
             // 
-            this.txtcstpho.Location = new System.Drawing.Point(25, 79);
-            this.txtcstpho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtcstpho.BackColor = System.Drawing.Color.White;
+            this.txtcstpho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcstpho.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtcstpho.Location = new System.Drawing.Point(30, 82);
+            this.txtcstpho.Margin = new System.Windows.Forms.Padding(5);
             this.txtcstpho.Name = "txtcstpho";
-            this.txtcstpho.Size = new System.Drawing.Size(340, 22);
+            this.txtcstpho.Size = new System.Drawing.Size(370, 25);
             this.txtcstpho.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(396, 123);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label4.Location = new System.Drawing.Point(430, 128);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.Size = new System.Drawing.Size(50, 19);
             this.label4.TabIndex = 8;
             this.label4.Text = "العنوان:";
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.combo_mndb);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label2);
@@ -129,44 +150,55 @@
             this.groupBox3.Controls.Add(this.txtcstadrs);
             this.groupBox3.Controls.Add(this.txtcstpho);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(16, 4);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.groupBox3.Location = new System.Drawing.Point(20, 20);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Size = new System.Drawing.Size(475, 313);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(15);
+            this.groupBox3.Size = new System.Drawing.Size(510, 350);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "بيانات العميل";
+            this.groupBox3.Text = "📝 بيانات العميل";
             // 
             // combo_mndb
             // 
+            this.combo_mndb.BackColor = System.Drawing.Color.White;
+            this.combo_mndb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_mndb.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.combo_mndb.FormattingEnabled = true;
-            this.combo_mndb.Location = new System.Drawing.Point(25, 223);
-            this.combo_mndb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_mndb.Location = new System.Drawing.Point(30, 225);
+            this.combo_mndb.Margin = new System.Windows.Forms.Padding(5);
             this.combo_mndb.Name = "combo_mndb";
-            this.combo_mndb.Size = new System.Drawing.Size(295, 24);
+            this.combo_mndb.Size = new System.Drawing.Size(320, 25);
             this.combo_mndb.TabIndex = 13;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(319, 226);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label9.Location = new System.Drawing.Point(355, 228);
+            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 16);
+            this.label9.Size = new System.Drawing.Size(125, 19);
             this.label9.TabIndex = 12;
             this.label9.Text = "المندوب الخاص بالعميل";
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.IndianRed;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_close_48;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(284, 332);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Location = new System.Drawing.Point(310, 390);
+            this.button4.Margin = new System.Windows.Forms.Padding(5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(181, 73);
+            this.button4.Padding = new System.Windows.Forms.Padding(10);
+            this.button4.Size = new System.Drawing.Size(200, 60);
             this.button4.TabIndex = 4;
             this.button4.Text = "خروج";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -175,16 +207,20 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGreen;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::WindowsFormsApplication2.Properties.Resources.male_user_add1;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button1.Location = new System.Drawing.Point(75, 332);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(50, 390);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 73);
+            this.button1.Padding = new System.Windows.Forms.Padding(10);
+            this.button1.Size = new System.Drawing.Size(220, 60);
             this.button1.TabIndex = 3;
-            this.button1.Text = "اضافه العميل ";
+            this.button1.Text = "إضافة العميل";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -193,18 +229,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 411);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.ClientSize = new System.Drawing.Size(550, 480);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Margin = new System.Windows.Forms.Padding(10);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_add_cstmr";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "اضافة عميل جديد";
+            this.Text = "👤 إضافة عميل جديد - نظام إدارة المبيعات";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);

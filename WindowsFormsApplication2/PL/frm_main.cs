@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -43,6 +44,7 @@ namespace WindowsFormsApplication2.PL
             {
                 frm = this;
             }
+            ApplyModernTheme();
             this.الاصنافToolStripMenuItem.Enabled = false;
             this.العملاءToolStripMenuItem.Enabled = false;
             this.المستخدمونToolStripMenuItem.Enabled = false;
@@ -81,6 +83,100 @@ namespace WindowsFormsApplication2.PL
                     this.label1.Text +="Expiration date :  \n"+ (Convert.ToDateTime(log.get_system_type().Rows[0][1].ToString()).AddMonths(Convert.ToInt32(log.get_system_type().Rows[0][2].ToString()))).ToLongDateString() + "\n";
                 
                 }
+            }
+        }
+
+        private void ApplyModernTheme()
+        {
+            // Apply modern theme to form
+            this.BackColor = ModernTheme.BackgroundMain;
+            
+            // Style MenuStrip
+            StyleMenuStrip();
+            
+            // Style DataGridView
+            ModernTheme.StyleDataGridView(dataGridView1);
+            
+            // Style GroupBox
+            ModernTheme.StyleGroupBox(groupBox1);
+            groupBox1.BackColor = ModernTheme.BackgroundCard;
+            
+            // Style all buttons in groupBox1
+            StyleSidebarButtons();
+            
+            // Style labels
+            label1.Font = new Font("Segoe UI", 28F, FontStyle.Bold);
+            label1.ForeColor = ModernTheme.TextPrimary;
+            
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+            label2.BackColor = ModernTheme.PrimaryColor;
+            label2.ForeColor = ModernTheme.TextLight;
+            
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            label3.BackColor = ModernTheme.SecondaryColor;
+            label3.ForeColor = ModernTheme.TextLight;
+            
+            // Style the unlock button
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.BackColor = ModernTheme.BackgroundMain;
+            button1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            button1.ForeColor = ModernTheme.PrimaryColor;
+        }
+
+        private void StyleMenuStrip()
+        {
+            // Modern menu strip styling
+            menuStrip1.BackColor = ModernTheme.BackgroundCard;
+            menuStrip1.ForeColor = ModernTheme.TextPrimary;
+            menuStrip1.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+            menuStrip1.Padding = new Padding(5, 5, 0, 5);
+            
+            // Style each top-level menu item
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.BackColor = ModernTheme.BackgroundCard;
+                item.ForeColor = ModernTheme.TextPrimary;
+                item.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                
+                // Style dropdown items
+                foreach (ToolStripItem subItem in item.DropDownItems)
+                {
+                    if (subItem is ToolStripMenuItem)
+                    {
+                        subItem.BackColor = ModernTheme.BackgroundCard;
+                        subItem.ForeColor = ModernTheme.TextPrimary;
+                        subItem.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
+                    }
+                }
+            }
+        }
+
+        private void StyleSidebarButtons()
+        {
+            // Style all buttons in the sidebar
+            Button[] buttons = { button2, button3, button4, button6, button12, button5, button7, button8, button9 };
+            
+            foreach (Button btn in buttons)
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackColor = ModernTheme.BackgroundCard;
+                btn.ForeColor = ModernTheme.PrimaryColor;
+                btn.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+                btn.FlatAppearance.BorderColor = ModernTheme.BorderLight;
+                btn.FlatAppearance.BorderSize = 1;
+                btn.FlatAppearance.MouseOverBackColor = ModernTheme.PrimaryLight;
+                btn.FlatAppearance.MouseDownBackColor = ModernTheme.PrimaryColor;
+                btn.Cursor = Cursors.Hand;
+                btn.TextAlign = ContentAlignment.BottomCenter;
+                btn.ImageAlign = ContentAlignment.TopCenter;
+                
+                // Add hover effect handlers
+                btn.MouseEnter += (s, e) => {
+                    ((Button)s).ForeColor = ModernTheme.TextLight;
+                };
+                btn.MouseLeave += (s, e) => {
+                    ((Button)s).ForeColor = ModernTheme.PrimaryColor;
+                };
             }
         }
         

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -22,6 +23,8 @@ namespace WindowsFormsApplication2.PL
             combo_mndb.DataSource = dt_mndob;
             combo_mndb.DisplayMember = "اسم المندوب";
             combo_mndb.ValueMember = "id";
+            
+            ApplyModernTheme();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,6 +51,55 @@ namespace WindowsFormsApplication2.PL
         {
             status = "closed";
             this.Close();
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style GroupBox
+            ModernTheme.StyleGroupBox(groupBox3);
+            groupBox3.BackColor = ModernTheme.BackgroundCard;
+            groupBox3.ForeColor = ModernTheme.TextPrimary;
+            
+            // Style TextBoxes
+            ModernTheme.StyleTextBox(txtcstnme);
+            ModernTheme.StyleTextBox(txtcstpho);
+            ModernTheme.StyleTextBox(txtcstadrs);
+            ModernTheme.StyleTextBox(txtmax);
+            
+            // Style ComboBox
+            ModernTheme.StyleComboBox(combo_mndb);
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label2, label3, label4, label9 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Main action button
+            ModernTheme.StyleButton(button1, ButtonStyle.Success);
+            
+            // Exit button
+            ModernTheme.StyleButton(button4, ButtonStyle.Danger);
         }
     }
 }

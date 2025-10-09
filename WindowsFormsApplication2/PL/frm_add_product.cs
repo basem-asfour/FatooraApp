@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -61,6 +62,8 @@ namespace WindowsFormsApplication2.PL
 
             txt_serial.Focus();
             txt_serial.Cursor = Cursor.Current;
+            
+            ApplyModernTheme();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -492,6 +495,98 @@ namespace WindowsFormsApplication2.PL
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style GroupBox
+            ModernTheme.StyleGroupBox(groupBox1);
+            groupBox1.BackColor = ModernTheme.BackgroundCard;
+            groupBox1.ForeColor = ModernTheme.TextPrimary;
+            
+            // Style TextBoxes
+            StyleTextBoxes();
+            
+            // Style ComboBoxes
+            StyleComboBoxes();
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+            
+            // Style DataGridViews
+            StyleDataGridViews();
+        }
+        
+        private void StyleTextBoxes()
+        {
+            TextBox[] textBoxes = { txt_serial, txtqte, txtpshr, txtpg, txtpb, txtmsthlk, txttmd };
+            
+            foreach (TextBox txt in textBoxes)
+            {
+                if (txt != null)
+                {
+                    ModernTheme.StyleTextBox(txt);
+                }
+            }
+            
+            // Special styling for total
+            if (txttmd != null)
+            {
+                txttmd.BackColor = Color.FromArgb(230, 244, 241); // Light green
+                txttmd.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            }
+        }
+        
+        private void StyleComboBoxes()
+        {
+            ModernTheme.StyleComboBox(txtnme);
+            ModernTheme.StyleComboBox(comboBox1);
+            ModernTheme.StyleComboBox(combo_stores);
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Main action button
+            ModernTheme.StyleButton(btnok, ButtonStyle.Success);
+            
+            // Image button
+            ModernTheme.StyleButton(button1, ButtonStyle.Primary);
+            
+            // Exit button
+            ModernTheme.StyleButton(button2, ButtonStyle.Danger);
+        }
+        
+        private void StyleDataGridViews()
+        {
+            if (dgv_pre_prd != null)
+            {
+                ModernTheme.StyleDataGridView(dgv_pre_prd);
+            }
+            
+            if (dataGridView1 != null)
+            {
+                ModernTheme.StyleDataGridView(dataGridView1);
+            }
         }
     }
 }

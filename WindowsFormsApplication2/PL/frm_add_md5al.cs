@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -19,6 +20,8 @@ namespace WindowsFormsApplication2.PL
         {
             InitializeComponent();
             dateTimePicker1.Value = System.DateTime.Today;
+            
+            ApplyModernTheme();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,6 +45,59 @@ namespace WindowsFormsApplication2.PL
 
             }
             
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style TextBoxes
+            ModernTheme.StyleTextBox(txtvalue);
+            ModernTheme.StyleTextBox(txtdskrbshn);
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+            
+            // Style DateTimePicker
+            StyleDateTimePicker();
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label2, label3 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Main action button
+            ModernTheme.StyleButton(button1, ButtonStyle.Success);
+            
+            // Exit button
+            ModernTheme.StyleButton(button2, ButtonStyle.Danger);
+        }
+        
+        private void StyleDateTimePicker()
+        {
+            if (dateTimePicker1 != null)
+            {
+                dateTimePicker1.Font = new Font("Segoe UI", 10F);
+                dateTimePicker1.CalendarFont = new Font("Segoe UI", 10F);
+                dateTimePicker1.CalendarTitleBackColor = ModernTheme.PrimaryColor;
+                dateTimePicker1.CalendarTitleForeColor = ModernTheme.TextLight;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -16,6 +17,8 @@ namespace WindowsFormsApplication2.PL
         public frm_add_user()
         {
             InitializeComponent();
+            
+            ApplyModernTheme();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -84,6 +87,47 @@ namespace WindowsFormsApplication2.PL
                 MessageBox.Show("كلمتي الباسورد غير متطابقه", "تاكيد الباسورد", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style TextBoxes
+            ModernTheme.StyleTextBox(txtid);
+            ModernTheme.StyleTextBox(txtpsrd);
+            ModernTheme.StyleTextBox(txtpsrdconfirm);
+            ModernTheme.StyleTextBox(txttotalname);
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label2, label3, label4 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Add/Edit button
+            ModernTheme.StyleButton(btnadd, ButtonStyle.Success);
+            
+            // Close button
+            ModernTheme.StyleButton(btnclose, ButtonStyle.Danger);
         }
     }
 }
