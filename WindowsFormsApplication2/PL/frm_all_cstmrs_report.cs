@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -17,6 +18,7 @@ namespace WindowsFormsApplication2.PL
         {
             InitializeComponent();
             
+            ApplyModernTheme();
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -268,6 +270,66 @@ namespace WindowsFormsApplication2.PL
             //    }
 
             //}
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style GroupBoxes
+            ModernTheme.StyleGroupBox(groupBox1);
+            groupBox1.BackColor = ModernTheme.BackgroundCard;
+            groupBox1.ForeColor = ModernTheme.TextPrimary;
+            groupBox1.Text = "📊 قائمة العملاء";
+            
+            ModernTheme.StyleGroupBox(groupBox2);
+            groupBox2.BackColor = ModernTheme.BackgroundCard;
+            groupBox2.ForeColor = ModernTheme.TextPrimary;
+            groupBox2.Text = "🔧 أدوات التقرير";
+            
+            // Style DataGridView
+            ModernTheme.StyleDataGridView(dataGridView1);
+            
+            // Style Bunifu Buttons
+            StyleBunifuButtons();
+        }
+        
+        private void StyleBunifuButtons()
+        {
+            // Apply Color Filter Button
+            if (bunifuFlatButton1 != null)
+            {
+                bunifuFlatButton1.Normalcolor = ModernTheme.PrimaryColor;
+                bunifuFlatButton1.Activecolor = ModernTheme.PrimaryDark;
+                bunifuFlatButton1.OnHovercolor = ModernTheme.PrimaryLight;
+                bunifuFlatButton1.Textcolor = ModernTheme.TextLight;
+                bunifuFlatButton1.TextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+                bunifuFlatButton1.ButtonText = "🎨 تطبيق فلتر الألوان";
+            }
+            
+            // Print Report Button
+            if (bunifuFlatButton2 != null)
+            {
+                bunifuFlatButton2.Normalcolor = ModernTheme.AccentGreen;
+                bunifuFlatButton2.Activecolor = Color.FromArgb(30, 130, 76);
+                bunifuFlatButton2.OnHovercolor = Color.FromArgb(46, 204, 113);
+                bunifuFlatButton2.Textcolor = ModernTheme.TextLight;
+                bunifuFlatButton2.TextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+                bunifuFlatButton2.ButtonText = "🖨️ طباعة التقرير";
+            }
+            
+            // Show Debtors Only Button
+            if (bunifuFlatButton3 != null)
+            {
+                bunifuFlatButton3.Normalcolor = ModernTheme.AccentOrange;
+                bunifuFlatButton3.Activecolor = Color.FromArgb(175, 96, 26);
+                bunifuFlatButton3.OnHovercolor = Color.FromArgb(211, 84, 0);
+                bunifuFlatButton3.Textcolor = ModernTheme.TextLight;
+                bunifuFlatButton3.TextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+                bunifuFlatButton3.ButtonText = "⚠️ عرض العملاء المدانين فقط";
+            }
         }
     }
 }

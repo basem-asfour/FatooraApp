@@ -73,13 +73,19 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.LightGreen;
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.Location = new System.Drawing.Point(977, 17);
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(1000, 20);
+            this.button11.Margin = new System.Windows.Forms.Padding(5);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(198, 25);
+            this.button11.Padding = new System.Windows.Forms.Padding(5);
+            this.button11.Size = new System.Drawing.Size(200, 35);
             this.button11.TabIndex = 69;
-            this.button11.Text = "بحث بالنوع";
+            this.button11.Text = "🔍 بحث بالنوع";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -87,20 +93,28 @@
             // 
             this.combo_cat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.combo_cat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combo_cat.BackColor = System.Drawing.Color.White;
+            this.combo_cat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_cat.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.combo_cat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.combo_cat.FormattingEnabled = true;
-            this.combo_cat.Location = new System.Drawing.Point(778, 19);
+            this.combo_cat.Location = new System.Drawing.Point(800, 25);
+            this.combo_cat.Margin = new System.Windows.Forms.Padding(5);
             this.combo_cat.Name = "combo_cat";
-            this.combo_cat.Size = new System.Drawing.Size(198, 21);
+            this.combo_cat.Size = new System.Drawing.Size(190, 25);
             this.combo_cat.TabIndex = 68;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(718, 22);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label7.Location = new System.Drawing.Point(720, 30);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.Size = new System.Drawing.Size(70, 19);
             this.label7.TabIndex = 67;
-            this.label7.Text = "اختيار النوع";
+            this.label7.Text = "📂 اختيار النوع";
             // 
             // txt_mrtg3_bee3
             // 
@@ -138,23 +152,32 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.Color.White;
             this.groupBox4.Controls.Add(this.dgv_mrtg3_mbe3at);
-            this.groupBox4.Location = new System.Drawing.Point(3, 329);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.groupBox4.Location = new System.Drawing.Point(10, 360);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(534, 259);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox4.Size = new System.Drawing.Size(540, 260);
             this.groupBox4.TabIndex = 48;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "مرتجع المبيعات";
+            this.groupBox4.Text = "🔄 مرتجع المبيعات";
             // 
             // dgv_mrtg3_mbe3at
             // 
             this.dgv_mrtg3_mbe3at.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_mrtg3_mbe3at.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_mrtg3_mbe3at.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_mrtg3_mbe3at.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_mrtg3_mbe3at.Location = new System.Drawing.Point(7, 15);
+            this.dgv_mrtg3_mbe3at.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
+            this.dgv_mrtg3_mbe3at.Location = new System.Drawing.Point(10, 30);
+            this.dgv_mrtg3_mbe3at.Margin = new System.Windows.Forms.Padding(5);
             this.dgv_mrtg3_mbe3at.Name = "dgv_mrtg3_mbe3at";
             this.dgv_mrtg3_mbe3at.ReadOnly = true;
             this.dgv_mrtg3_mbe3at.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_mrtg3_mbe3at.Size = new System.Drawing.Size(521, 238);
+            this.dgv_mrtg3_mbe3at.Size = new System.Drawing.Size(520, 220);
             this.dgv_mrtg3_mbe3at.TabIndex = 1;
             // 
             // button6
@@ -199,33 +222,45 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.dgv_mrtg3_mshtriat);
-            this.groupBox3.Location = new System.Drawing.Point(545, 329);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.groupBox3.Location = new System.Drawing.Point(560, 360);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(686, 259);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox3.Size = new System.Drawing.Size(690, 260);
             this.groupBox3.TabIndex = 50;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "مرتجع المشتريات";
+            this.groupBox3.Text = "↩️ مرتجع المشتريات";
             // 
             // dgv_mrtg3_mshtriat
             // 
             this.dgv_mrtg3_mshtriat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_mrtg3_mshtriat.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_mrtg3_mshtriat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_mrtg3_mshtriat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_mrtg3_mshtriat.Location = new System.Drawing.Point(0, 17);
+            this.dgv_mrtg3_mshtriat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
+            this.dgv_mrtg3_mshtriat.Location = new System.Drawing.Point(10, 30);
+            this.dgv_mrtg3_mshtriat.Margin = new System.Windows.Forms.Padding(5);
             this.dgv_mrtg3_mshtriat.Name = "dgv_mrtg3_mshtriat";
             this.dgv_mrtg3_mshtriat.ReadOnly = true;
             this.dgv_mrtg3_mshtriat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_mrtg3_mshtriat.Size = new System.Drawing.Size(680, 236);
+            this.dgv_mrtg3_mshtriat.Size = new System.Drawing.Size(670, 220);
             this.dgv_mrtg3_mshtriat.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(274, 21);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label3.Location = new System.Drawing.Point(280, 30);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 13);
+            this.label3.Size = new System.Drawing.Size(30, 19);
             this.label3.TabIndex = 57;
-            this.label3.Text = "الي";
+            this.label3.Text = "📅 إلى";
             // 
             // dateTimePicker2
             // 
@@ -280,13 +315,19 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.LightGreen;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Location = new System.Drawing.Point(535, 15);
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(550, 20);
+            this.button5.Margin = new System.Windows.Forms.Padding(5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 25);
+            this.button5.Padding = new System.Windows.Forms.Padding(5);
+            this.button5.Size = new System.Drawing.Size(150, 35);
             this.button5.TabIndex = 53;
-            this.button5.Text = "بحث بالنوع والتاريخ";
+            this.button5.Text = "📅 بحث بالنوع والتاريخ";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -301,33 +342,45 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.dgv_mshtriat);
-            this.groupBox2.Location = new System.Drawing.Point(545, 44);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.groupBox2.Location = new System.Drawing.Point(560, 60);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(686, 284);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox2.Size = new System.Drawing.Size(690, 290);
             this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "المشتريات";
+            this.groupBox2.Text = "🛒 المشتريات";
             // 
             // dgv_mshtriat
             // 
             this.dgv_mshtriat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_mshtriat.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_mshtriat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_mshtriat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_mshtriat.Location = new System.Drawing.Point(0, 17);
+            this.dgv_mshtriat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
+            this.dgv_mshtriat.Location = new System.Drawing.Point(10, 30);
+            this.dgv_mshtriat.Margin = new System.Windows.Forms.Padding(5);
             this.dgv_mshtriat.Name = "dgv_mshtriat";
             this.dgv_mshtriat.ReadOnly = true;
             this.dgv_mshtriat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_mshtriat.Size = new System.Drawing.Size(680, 253);
+            this.dgv_mshtriat.Size = new System.Drawing.Size(670, 250);
             this.dgv_mshtriat.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 21);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label1.Location = new System.Drawing.Point(15, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.Size = new System.Drawing.Size(25, 19);
             this.label1.TabIndex = 49;
-            this.label1.Text = "من";
+            this.label1.Text = "📅 من";
             // 
             // button1
             // 
@@ -357,23 +410,32 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.dgv_mbe3at);
-            this.groupBox1.Location = new System.Drawing.Point(3, 44);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.groupBox1.Location = new System.Drawing.Point(10, 60);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(534, 284);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(540, 290);
             this.groupBox1.TabIndex = 46;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "المبيعات";
+            this.groupBox1.Text = "📈 المبيعات";
             // 
             // dgv_mbe3at
             // 
             this.dgv_mbe3at.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_mbe3at.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_mbe3at.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_mbe3at.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_mbe3at.Location = new System.Drawing.Point(7, 15);
+            this.dgv_mbe3at.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
+            this.dgv_mbe3at.Location = new System.Drawing.Point(10, 30);
+            this.dgv_mbe3at.Margin = new System.Windows.Forms.Padding(5);
             this.dgv_mbe3at.Name = "dgv_mbe3at";
             this.dgv_mbe3at.ReadOnly = true;
             this.dgv_mbe3at.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_mbe3at.Size = new System.Drawing.Size(521, 261);
+            this.dgv_mbe3at.Size = new System.Drawing.Size(520, 250);
             this.dgv_mbe3at.TabIndex = 1;
             // 
             // txt_qte_mrtg3_bee3
@@ -425,7 +487,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1241, 660);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.ClientSize = new System.Drawing.Size(1300, 700);
             this.Controls.Add(this.txt_qte_bee3);
             this.Controls.Add(this.txt_qte_mrtg3_bee3);
             this.Controls.Add(this.button11);
@@ -454,11 +517,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Name = "frm_catogry_report";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "تقرير الأنواع الأساسية";
+            this.Text = "📊 تقرير الأنواع الأساسية - نظام إدارة المبيعات";
             this.Load += new System.EventHandler(this.frm_catogry_report_Load);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mrtg3_mbe3at)).EndInit();

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -16,6 +17,66 @@ namespace WindowsFormsApplication2.PL
         public frm_all_mwrdeen_report()
         {
             InitializeComponent();
+            
+            ApplyModernTheme();
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style GroupBoxes
+            if (groupBox1 != null)
+            {
+                ModernTheme.StyleGroupBox(groupBox1);
+                groupBox1.BackColor = ModernTheme.BackgroundCard;
+                groupBox1.ForeColor = ModernTheme.TextPrimary;
+                groupBox1.Text = "📋 قائمة الموردين";
+            }
+            
+            if (groupBox2 != null)
+            {
+                ModernTheme.StyleGroupBox(groupBox2);
+                groupBox2.BackColor = ModernTheme.BackgroundCard;
+                groupBox2.ForeColor = ModernTheme.TextPrimary;
+                groupBox2.Text = "🔧 أدوات التقرير";
+            }
+            
+            // Style DataGridView
+            if (dataGridView1 != null)
+            {
+                ModernTheme.StyleDataGridView(dataGridView1);
+            }
+            
+            // Style Bunifu Buttons
+            StyleBunifuButtons();
+        }
+        
+        private void StyleBunifuButtons()
+        {
+            // Apply Color Filter Button
+            if (bunifuFlatButton1 != null)
+            {
+                bunifuFlatButton1.Normalcolor = ModernTheme.PrimaryColor;
+                bunifuFlatButton1.Activecolor = ModernTheme.PrimaryDark;
+                bunifuFlatButton1.OnHovercolor = ModernTheme.PrimaryLight;
+                bunifuFlatButton1.Textcolor = ModernTheme.TextLight;
+                bunifuFlatButton1.TextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+                bunifuFlatButton1.ButtonText = "🎨 تطبيق فلتر الألوان";
+            }
+            
+            // Print Report Button
+            if (bunifuFlatButton2 != null)
+            {
+                bunifuFlatButton2.Normalcolor = ModernTheme.AccentGreen;
+                bunifuFlatButton2.Activecolor = Color.FromArgb(30, 130, 76);
+                bunifuFlatButton2.OnHovercolor = Color.FromArgb(46, 204, 113);
+                bunifuFlatButton2.Textcolor = ModernTheme.TextLight;
+                bunifuFlatButton2.TextFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+                bunifuFlatButton2.ButtonText = "🖨️ طباعة التقرير";
+            }
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)

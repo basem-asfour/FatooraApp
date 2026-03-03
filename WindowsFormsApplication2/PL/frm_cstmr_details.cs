@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -18,7 +19,212 @@ namespace WindowsFormsApplication2.PL
         public frm_cstmr_details()
         {
             InitializeComponent();
-               
+            
+            ApplyModernTheme();
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style TextBoxes
+            StyleTextBoxes();
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+            
+            // Style GroupBoxes
+            StyleGroupBoxes();
+            
+            // Style DataGridViews
+            StyleDataGridViews();
+        }
+        
+        private void StyleTextBoxes()
+        {
+            // Financial summary textboxes with special styling
+            if (txttotal != null)
+            {
+                txttotal.BackColor = Color.FromArgb(220, 248, 198); // Light green for total
+                txttotal.BorderStyle = BorderStyle.FixedSingle;
+                txttotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+                txttotal.ForeColor = Color.FromArgb(39, 174, 96); // Dark green text
+                txttotal.TextAlign = HorizontalAlignment.Center;
+            }
+            
+            if (txtmsdd != null)
+            {
+                txtmsdd.BackColor = Color.FromArgb(255, 243, 205); // Light orange for paid
+                txtmsdd.BorderStyle = BorderStyle.FixedSingle;
+                txtmsdd.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+                txtmsdd.ForeColor = Color.FromArgb(230, 126, 34); // Dark orange text
+                txtmsdd.TextAlign = HorizontalAlignment.Center;
+            }
+            
+            if (txtmtpakii != null)
+            {
+                txtmtpakii.BackColor = Color.FromArgb(248, 215, 218); // Light red for remaining
+                txtmtpakii.BorderStyle = BorderStyle.FixedSingle;
+                txtmtpakii.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+                txtmtpakii.ForeColor = Color.FromArgb(220, 53, 69); // Dark red text
+                txtmtpakii.TextAlign = HorizontalAlignment.Center;
+            }
+            
+            if (txt_total_mrtg3 != null)
+            {
+                txt_total_mrtg3.BackColor = Color.FromArgb(255, 243, 205); // Light orange for returns
+                txt_total_mrtg3.BorderStyle = BorderStyle.FixedSingle;
+                txt_total_mrtg3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+                txt_total_mrtg3.ForeColor = Color.FromArgb(230, 126, 34); // Dark orange text
+                txt_total_mrtg3.TextAlign = HorizontalAlignment.Center;
+            }
+            
+            if (txt_rseed_first != null)
+            {
+                txt_rseed_first.BackColor = Color.FromArgb(220, 248, 198); // Light green for initial balance
+                txt_rseed_first.BorderStyle = BorderStyle.FixedSingle;
+                txt_rseed_first.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+                txt_rseed_first.ForeColor = Color.FromArgb(39, 174, 96); // Dark green text
+                txt_rseed_first.TextAlign = HorizontalAlignment.Center;
+            }
+            
+            // Readonly customer info textboxes
+            if (txtcstid != null)
+            {
+                txtcstid.BackColor = Color.FromArgb(248, 249, 250); // Very light gray for readonly
+                txtcstid.ForeColor = ModernTheme.TextSecondary;
+                txtcstid.BorderStyle = BorderStyle.FixedSingle;
+                txtcstid.Font = ModernTheme.NormalFont;
+            }
+            
+            if (txtcstnme != null)
+            {
+                txtcstnme.BackColor = Color.FromArgb(248, 249, 250); // Very light gray for readonly
+                txtcstnme.ForeColor = ModernTheme.TextSecondary;
+                txtcstnme.BorderStyle = BorderStyle.FixedSingle;
+                txtcstnme.Font = ModernTheme.NormalFont;
+            }
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label2, label3, label4, label5, label6, label7 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                    label.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    label.ForeColor = ModernTheme.TextPrimary;
+                    
+                    // Special styling for financial summary labels
+                    if (label == label1) // Total purchases
+                    {
+                        label.BackColor = Color.FromArgb(220, 248, 198);
+                        label.Text = "💰 إجمالي البضاعة المسحوبة";
+                    }
+                    else if (label == label4) // Paid amount
+                    {
+                        label.BackColor = Color.FromArgb(255, 243, 205);
+                        label.Text = "💳 مسدد منها";
+                    }
+                    else if (label == label5) // Remaining amount
+                    {
+                        label.BackColor = Color.FromArgb(248, 215, 218);
+                        label.Text = "⚠️ مدان ب";
+                    }
+                    else if (label == label6) // Total returns
+                    {
+                        label.BackColor = Color.FromArgb(255, 243, 205);
+                        label.Text = "↩️ إجمالي المرتجع";
+                    }
+                    else if (label == label7) // Initial balance
+                    {
+                        label.BackColor = Color.FromArgb(220, 248, 198);
+                        label.Text = "🏦 رصيد أول";
+                    }
+                    else if (label == label2) // Customer ID
+                    {
+                        label.Text = "🆔 كود العميل:";
+                    }
+                    else if (label == label3) // Customer name
+                    {
+                        label.Text = "👤 اسم العميل:";
+                    }
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Customer Payments Button
+            if (button2 != null)
+            {
+                ModernTheme.StyleButton(button2, ButtonStyle.Success);
+                button2.Text = "💳 مدفوعات العميل";
+                button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            }
+            
+            // Print Report Button
+            if (button3 != null)
+            {
+                ModernTheme.StyleButton(button3, ButtonStyle.Primary);
+                button3.Text = "🖨️ طباعة تقرير العميل (مشتريات و تحصيل)";
+                button3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            }
+            
+            // Close Button
+            if (button1 != null)
+            {
+                ModernTheme.StyleButton(button1, ButtonStyle.Danger);
+                button1.Text = "❌ خروج";
+                button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            }
+        }
+        
+        private void StyleGroupBoxes()
+        {
+            if (groupBox1 != null)
+            {
+                ModernTheme.StyleGroupBox(groupBox1);
+                groupBox1.BackColor = ModernTheme.BackgroundCard;
+                groupBox1.ForeColor = ModernTheme.TextPrimary;
+                groupBox1.Text = "📋 الفواتير الخاصة بالعميل";
+                groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            }
+            
+            if (groupBox2 != null)
+            {
+                ModernTheme.StyleGroupBox(groupBox2);
+                groupBox2.BackColor = ModernTheme.BackgroundCard;
+                groupBox2.ForeColor = ModernTheme.TextPrimary;
+                groupBox2.Text = "↩️ فواتير المرتجع";
+                groupBox2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            }
+        }
+        
+        private void StyleDataGridViews()
+        {
+            if (dataGridView1 != null)
+            {
+                ModernTheme.StyleDataGridView(dataGridView1);
+            }
+            
+            if (dgv_asnaaf != null)
+            {
+                ModernTheme.StyleDataGridView(dgv_asnaaf);
+            }
+            
+            if (dgv_fwateer != null)
+            {
+                ModernTheme.StyleDataGridView(dgv_fwateer);
+            }
         }
         public void refresh_frm()
         {

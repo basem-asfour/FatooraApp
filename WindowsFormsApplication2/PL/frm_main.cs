@@ -602,5 +602,10 @@ namespace WindowsFormsApplication2.PL
             PL.frm_orders_list frm = new frm_orders_list();
             frm.Show();
         }
+
+        private void اخريToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

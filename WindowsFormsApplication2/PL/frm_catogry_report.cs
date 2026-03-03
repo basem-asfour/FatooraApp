@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -23,12 +24,205 @@ namespace WindowsFormsApplication2.PL
         public frm_catogry_report()
         {
             InitializeComponent();
+            
+            ApplyModernTheme();
+            
             dt_cat = prd.get_all_catogries();
             combo_cat.DataSource = dt_cat;
             combo_cat.DisplayMember = "النوع";
             combo_cat.ValueMember = "id";
             dateTimePicker1.Value = DateTime.Now.Date;
             dateTimePicker2.Value = DateTime.Now.Date;
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = ModernTheme.NormalFont;
+            
+            // Style ComboBox
+            if (combo_cat != null)
+            {
+                ModernTheme.StyleComboBox(combo_cat);
+            }
+            
+            // Style DateTimePickers
+            StyleDateTimePickers();
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+            
+            // Style TextBoxes
+            StyleTextBoxes();
+            
+            // Style GroupBoxes
+            StyleGroupBoxes();
+            
+            // Style DataGridViews
+            StyleDataGridViews();
+        }
+        
+        private void StyleDateTimePickers()
+        {
+            if (dateTimePicker1 != null)
+            {
+                dateTimePicker1.Font = ModernTheme.NormalFont;
+                dateTimePicker1.CalendarFont = ModernTheme.NormalFont;
+                dateTimePicker1.CalendarTitleBackColor = ModernTheme.PrimaryColor;
+                dateTimePicker1.CalendarTitleForeColor = ModernTheme.TextLight;
+            }
+            
+            if (dateTimePicker2 != null)
+            {
+                dateTimePicker2.Font = ModernTheme.NormalFont;
+                dateTimePicker2.CalendarFont = ModernTheme.NormalFont;
+                dateTimePicker2.CalendarTitleBackColor = ModernTheme.PrimaryColor;
+                dateTimePicker2.CalendarTitleForeColor = ModernTheme.TextLight;
+            }
+        }
+        
+        private void StyleLabels()
+        {
+            Label[] labels = { label1, label3, label7 };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                    label.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    label.ForeColor = ModernTheme.TextPrimary;
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Search by Category Button
+            if (button11 != null)
+            {
+                ModernTheme.StyleButton(button11, ButtonStyle.Primary);
+                button11.Text = "🔍 بحث بالنوع";
+                button11.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            }
+            
+            // Search by Category and Date Button
+            if (button5 != null)
+            {
+                ModernTheme.StyleButton(button5, ButtonStyle.Success);
+                button5.Text = "📅 بحث بالنوع والتاريخ";
+                button5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            }
+            
+            // Exit Button
+            if (button7 != null)
+            {
+                ModernTheme.StyleButton(button7, ButtonStyle.Danger);
+                button7.Text = "❌ خروج";
+                button7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            }
+            
+            // Summary Buttons
+            if (button6 != null)
+            {
+                ModernTheme.StyleButton(button6, ButtonStyle.Secondary);
+                button6.Text = "💰 إجمالي مبيعات";
+                button6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            }
+            
+            if (button10 != null)
+            {
+                ModernTheme.StyleButton(button10, ButtonStyle.Secondary);
+                button10.Text = "🔄 إجمالي مرتجع مبيعات";
+                button10.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            }
+            
+            if (button1 != null)
+            {
+                ModernTheme.StyleButton(button1, ButtonStyle.Secondary);
+                button1.Text = "🛒 إجمالي مشتريات";
+                button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            }
+            
+            if (button9 != null)
+            {
+                ModernTheme.StyleButton(button9, ButtonStyle.Secondary);
+                button9.Text = "↩️ إجمالي مرتجع مشتريات";
+                button9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            }
+            
+            if (button2 != null)
+            {
+                ModernTheme.StyleButton(button2, ButtonStyle.Primary);
+                button2.Text = "📊 صافي";
+                button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            }
+        }
+        
+        private void StyleTextBoxes()
+        {
+            // Summary TextBoxes with special styling
+            TextBox[] summaryBoxes = { txt_bee3, txt_mrtg3_bee3, txt_shraa, txt_mrtg3_shraa, txt_safi };
+            TextBox[] quantityBoxes = { txt_qte_bee3, txt_qte_mrtg3_bee3, txt_qte_shraa, txt_qte_mrtg3_shraa, txt_qte_safi };
+            
+            foreach (TextBox textBox in summaryBoxes)
+            {
+                if (textBox != null)
+                {
+                    textBox.BackColor = ModernTheme.BackgroundCard;
+                    textBox.BorderStyle = BorderStyle.FixedSingle;
+                    textBox.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    textBox.ForeColor = ModernTheme.TextPrimary;
+                    textBox.TextAlign = HorizontalAlignment.Center;
+                }
+            }
+            
+            foreach (TextBox textBox in quantityBoxes)
+            {
+                if (textBox != null)
+                {
+                    textBox.BackColor = Color.FromArgb(248, 249, 250);
+                    textBox.BorderStyle = BorderStyle.FixedSingle;
+                    textBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+                    textBox.ForeColor = ModernTheme.TextSecondary;
+                    textBox.TextAlign = HorizontalAlignment.Center;
+                }
+            }
+        }
+        
+        private void StyleGroupBoxes()
+        {
+            GroupBox[] groupBoxes = { groupBox1, groupBox2, groupBox3, groupBox4 };
+            string[] titles = { "📈 المبيعات", "🛒 المشتريات", "↩️ مرتجع المشتريات", "🔄 مرتجع المبيعات" };
+            
+            for (int i = 0; i < groupBoxes.Length; i++)
+            {
+                if (groupBoxes[i] != null)
+                {
+                    ModernTheme.StyleGroupBox(groupBoxes[i]);
+                    groupBoxes[i].BackColor = ModernTheme.BackgroundCard;
+                    groupBoxes[i].ForeColor = ModernTheme.TextPrimary;
+                    groupBoxes[i].Text = titles[i];
+                    groupBoxes[i].Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+                }
+            }
+        }
+        
+        private void StyleDataGridViews()
+        {
+            DataGridView[] dataGridViews = { dgv_mbe3at, dgv_mshtriat, dgv_mrtg3_mshtriat, dgv_mrtg3_mbe3at };
+            
+            foreach (DataGridView dgv in dataGridViews)
+            {
+                if (dgv != null)
+                {
+                    ModernTheme.StyleDataGridView(dgv);
+                }
+            }
         }
 
         public void refresh_txt()

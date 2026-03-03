@@ -31,21 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تسجيلالدخولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.انشاءنسخهاحتياطيهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +70,21 @@
             this.النقديةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.المصروفاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالتحصيلوالمصروفاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,263 +100,17 @@
             this.ملفToolStripMenuItem,
             this.الاصنافToolStripMenuItem,
             this.العملاءToolStripMenuItem,
-            this.المستخدمونToolStripMenuItem,
             this.الموردينToolStripMenuItem,
+            this.المستخدمونToolStripMenuItem,
             this.اخريToolStripMenuItem,
             this.النقديةToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 5);
-            this.menuStrip1.Size = new System.Drawing.Size(1369, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1369, 37);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button12);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.groupBox1.Location = new System.Drawing.Point(1186, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(183, 678);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.dataGridView1.Location = new System.Drawing.Point(497, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(689, 678);
-            this.dataGridView1.TabIndex = 13;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(1186, 718);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 31);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "label3";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::WindowsFormsApplication2.Properties.Resources._7907f66f_e9d4_41f9_8577_cdf45bdcb104;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.button1.Location = new System.Drawing.Point(0, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(497, 678);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "press to unlock";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button9
-            // 
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ForeColor = System.Drawing.Color.Navy;
-            this.button9.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_positive_dynamic_48;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button9.Location = new System.Drawing.Point(3, 608);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(177, 72);
-            this.button9.TabIndex = 14;
-            this.button9.Text = "ادارة المبيعات";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click_1);
-            // 
-            // button8
-            // 
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.Navy;
-            this.button8.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_box_settings_48;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.Location = new System.Drawing.Point(3, 536);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(177, 72);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "ادارة الأصناف";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
-            // 
-            // button7
-            // 
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.Navy;
-            this.button7.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_flow_chart_48;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.Location = new System.Drawing.Point(3, 469);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(177, 67);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "ادارة الأنواع ";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
-            // 
-            // button5
-            // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.Navy;
-            this.button5.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_money_bag_40;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(3, 403);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(177, 66);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "تحصيل ومصاريف";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_2);
-            // 
-            // button12
-            // 
-            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.ForeColor = System.Drawing.Color.Navy;
-            this.button12.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_delivery_48;
-            this.button12.Location = new System.Drawing.Point(3, 326);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(177, 77);
-            this.button12.TabIndex = 10;
-            this.button12.Text = "المناديب";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // button6
-            // 
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Navy;
-            this.button6.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_clear_shopping_cart_48;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.Location = new System.Drawing.Point(3, 245);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(177, 81);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "مرتجع مبيعات";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // button4
-            // 
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.Navy;
-            this.button4.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_users_48;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(3, 162);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(177, 83);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "إدارة الموردين";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_2);
-            // 
-            // button3
-            // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Navy;
-            this.button3.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_e_commerce_48;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(3, 95);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(177, 67);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "ايجاد عملية تحصيل";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.Navy;
-            this.button2.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_add_shopping_cart_48;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(3, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(177, 72);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "اضافة بيع جديد";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_palestine_48;
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(0, 718);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1369, 31);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "bower by E. Basem asfour";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // ملفToolStripMenuItem
             // 
@@ -563,7 +317,7 @@
             // 
             this.اضافهمستخدمجديدToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.male_user_add;
             this.اضافهمستخدمجديدToolStripMenuItem.Name = "اضافهمستخدمجديدToolStripMenuItem";
-            this.اضافهمستخدمجديدToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.اضافهمستخدمجديدToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.اضافهمستخدمجديدToolStripMenuItem.Text = "اضافه مستخدم جديد";
             this.اضافهمستخدمجديدToolStripMenuItem.Click += new System.EventHandler(this.اضافهمستخدمجديدToolStripMenuItem_Click);
             // 
@@ -571,20 +325,20 @@
             // 
             this.ادرهالمستخدمونToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.ManageUsers_icon;
             this.ادرهالمستخدمونToolStripMenuItem.Name = "ادرهالمستخدمونToolStripMenuItem";
-            this.ادرهالمستخدمونToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.ادرهالمستخدمونToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ادرهالمستخدمونToolStripMenuItem.Text = "اداره المستخدمون";
             this.ادرهالمستخدمونToolStripMenuItem.Click += new System.EventHandler(this.ادرهالمستخدمونToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(219, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // ادارةالماليةToolStripMenuItem
             // 
             this.ادارةالماليةToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.Money_icon;
             this.ادارةالماليةToolStripMenuItem.Name = "ادارةالماليةToolStripMenuItem";
-            this.ادارةالماليةToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.ادارةالماليةToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ادارةالماليةToolStripMenuItem.Text = "ادارة المالية";
             this.ادارةالماليةToolStripMenuItem.Click += new System.EventHandler(this.ادارةالماليةToolStripMenuItem_Click);
             // 
@@ -592,7 +346,7 @@
             // 
             this.الرصيدToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.Cash_icon;
             this.الرصيدToolStripMenuItem.Name = "الرصيدToolStripMenuItem";
-            this.الرصيدToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.الرصيدToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.الرصيدToolStripMenuItem.Text = "الرصيد";
             this.الرصيدToolStripMenuItem.Click += new System.EventHandler(this.الرصيدToolStripMenuItem_Click);
             // 
@@ -642,28 +396,29 @@
             this.اخريToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.اخريToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.shop_icon;
             this.اخريToolStripMenuItem.Name = "اخريToolStripMenuItem";
-            this.اخريToolStripMenuItem.Size = new System.Drawing.Size(143, 27);
-            this.اخريToolStripMenuItem.Text = "مخازن ومندوبين";
+            this.اخريToolStripMenuItem.Size = new System.Drawing.Size(138, 27);
+            this.اخريToolStripMenuItem.Text = "مخازن ومناديب";
+            this.اخريToolStripMenuItem.Click += new System.EventHandler(this.اخريToolStripMenuItem_Click);
             // 
             // ادارةالمخازنToolStripMenuItem
             // 
             this.ادارةالمخازنToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.shop_icon;
             this.ادارةالمخازنToolStripMenuItem.Name = "ادارةالمخازنToolStripMenuItem";
-            this.ادارةالمخازنToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.ادارةالمخازنToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ادارةالمخازنToolStripMenuItem.Text = "ادارة المخازن";
             this.ادارةالمخازنToolStripMenuItem.Click += new System.EventHandler(this.ادارةالمخازنToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(221, 6);
             // 
             // المندوبينToolStripMenuItem
             // 
             this.المندوبينToolStripMenuItem.Image = global::WindowsFormsApplication2.Properties.Resources.truck_icon__1_;
             this.المندوبينToolStripMenuItem.Name = "المندوبينToolStripMenuItem";
-            this.المندوبينToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
-            this.المندوبينToolStripMenuItem.Text = "المندوبين";
+            this.المندوبينToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.المندوبينToolStripMenuItem.Text = "المناديب";
             this.المندوبينToolStripMenuItem.Click += new System.EventHandler(this.المندوبينToolStripMenuItem_Click);
             // 
             // النقديةToolStripMenuItem
@@ -694,6 +449,251 @@
             this.تقريرالتحصيلوالمصروفاتToolStripMenuItem.Text = "تقرير التحصيل والمصروفات";
             this.تقريرالتحصيلوالمصروفاتToolStripMenuItem.Click += new System.EventHandler(this.تقريرالتحصيلوالمصروفاتToolStripMenuItem_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.groupBox1.Location = new System.Drawing.Point(1186, 37);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(183, 681);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            // 
+            // button9
+            // 
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ForeColor = System.Drawing.Color.Navy;
+            this.button9.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_positive_dynamic_48;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button9.Location = new System.Drawing.Point(5, 613);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(173, 72);
+            this.button9.TabIndex = 14;
+            this.button9.Text = "ادارة المبيعات";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
+            // button8
+            // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.Navy;
+            this.button8.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_box_settings_48;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button8.Location = new System.Drawing.Point(5, 541);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(173, 72);
+            this.button8.TabIndex = 13;
+            this.button8.Text = "ادارة الأصناف";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
+            // button7
+            // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.Navy;
+            this.button7.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_flow_chart_48;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button7.Location = new System.Drawing.Point(5, 474);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(173, 67);
+            this.button7.TabIndex = 12;
+            this.button7.Text = "ادارة الأنواع ";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.Navy;
+            this.button5.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_money_bag_40;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button5.Location = new System.Drawing.Point(5, 408);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(173, 66);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "تحصيل ومصاريف";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_2);
+            // 
+            // button12
+            // 
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ForeColor = System.Drawing.Color.Navy;
+            this.button12.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_delivery_48;
+            this.button12.Location = new System.Drawing.Point(5, 331);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(173, 77);
+            this.button12.TabIndex = 10;
+            this.button12.Text = "المناديب";
+            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button6
+            // 
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.Navy;
+            this.button6.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_clear_shopping_cart_48;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button6.Location = new System.Drawing.Point(5, 250);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(173, 81);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "مرتجع مبيعات";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.Navy;
+            this.button4.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_users_48;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button4.Location = new System.Drawing.Point(5, 167);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(173, 83);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "إدارة الموردين";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            // 
+            // button3
+            // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.Navy;
+            this.button3.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_e_commerce_48;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(5, 100);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(173, 67);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "ايجاد عملية تحصيل";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Navy;
+            this.button2.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_add_shopping_cart_48;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(5, 28);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(173, 72);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "اضافة بيع جديد";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.dataGridView1.Location = new System.Drawing.Point(497, 37);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(689, 681);
+            this.dataGridView1.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(1186, 718);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 31);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "label3";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::WindowsFormsApplication2.Properties.Resources._7907f66f_e9d4_41f9_8577_cdf45bdcb104;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.button1.Location = new System.Drawing.Point(0, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(497, 681);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "press to unlock";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(0, 718);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1369, 31);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "bower by E. Basem asfour";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
@@ -712,7 +712,7 @@
             // 
             // frm_main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1369, 749);

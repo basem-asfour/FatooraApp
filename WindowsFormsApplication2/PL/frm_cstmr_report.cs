@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication2.BL;
+using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
 {
@@ -21,6 +22,9 @@ namespace WindowsFormsApplication2.PL
         public frm_cstmr_report()
         {
             InitializeComponent();
+            
+            ApplyModernTheme();
+            
             dt_cstmr = cstmr.get_all_cstmrs();
             combo_cstmr.DataSource = dt_cstmr;
             combo_cstmr.DisplayMember = "اسم العميل";
@@ -28,6 +32,157 @@ namespace WindowsFormsApplication2.PL
             combo_cstmr.Text = "";
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = DateTime.Now;
+        }
+        
+        private void ApplyModernTheme()
+        {
+            // Apply modern form styling
+            this.BackColor = ModernTheme.BackgroundMain;
+            this.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            
+            // Style ComboBoxes
+            StyleComboBoxes();
+            
+            // Style DateTimePickers
+            StyleDateTimePickers();
+            
+            // Style Labels
+            StyleLabels();
+            
+            // Style Buttons
+            StyleButtons();
+            
+            // Style TextBoxes
+            StyleTextBoxes();
+            
+            // Style DataGridViews
+            StyleDataGridViews();
+        }
+        
+        private void StyleComboBoxes()
+        {
+            if (combo_cstmr != null)
+            {
+                ModernTheme.StyleComboBox(combo_cstmr);
+                combo_cstmr.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            }
+        }
+        
+        private void StyleDateTimePickers()
+        {
+            if (dateTimePicker1 != null)
+            {
+                dateTimePicker1.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+                dateTimePicker1.CalendarFont = new Font("Segoe UI", 9F, FontStyle.Regular);
+                dateTimePicker1.CalendarTitleBackColor = ModernTheme.PrimaryColor;
+                dateTimePicker1.CalendarTitleForeColor = ModernTheme.TextLight;
+            }
+            
+            if (dateTimePicker2 != null)
+            {
+                dateTimePicker2.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+                dateTimePicker2.CalendarFont = new Font("Segoe UI", 9F, FontStyle.Regular);
+                dateTimePicker2.CalendarTitleBackColor = ModernTheme.PrimaryColor;
+                dateTimePicker2.CalendarTitleForeColor = ModernTheme.TextLight;
+            }
+        }
+        
+        private void StyleLabels()
+        {
+            // Only labels that exist on this form (from Designer)
+            Label[] labels = { label1, label3, label7, label_days };
+            
+            foreach (Label label in labels)
+            {
+                if (label != null)
+                {
+                    ModernTheme.StyleLabel(label, LabelStyle.Normal);
+                    label.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+                    label.ForeColor = ModernTheme.TextPrimary;
+                    label.UseCompatibleTextRendering = false;
+                    label.AutoSize = false;
+                }
+            }
+        }
+        
+        private void StyleButtons()
+        {
+            // Get all buttons using reflection or manual list
+            Button[] buttons = { button4, button5, button11 };
+            
+            foreach (Button button in buttons)
+            {
+                if (button != null)
+                {
+                    if (button == button4) // Print button
+                    {
+                        ModernTheme.StyleButton(button, ButtonStyle.Primary);
+                        button.Text = "🖨️ طباعة التقرير";
+                        button.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    }
+                    else if (button == button5) // Filter by date button
+                    {
+                        ModernTheme.StyleButton(button, ButtonStyle.Success);
+                        button.Text = "🔍 فلترة بالتاريخ";
+                        button.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    }
+                    else if (button == button11) // Generate report button
+                    {
+                        ModernTheme.StyleButton(button, ButtonStyle.Primary);
+                        button.Text = "📊 إنشاء التقرير";
+                        button.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    }
+                    
+                    button.UseCompatibleTextRendering = false;
+                }
+            }
+        }
+        
+        private void StyleTextBoxes()
+        {
+            // Financial summary textboxes with special styling
+            TextBox[] summaryBoxes = { txt_total_bee3, txt_total_first_rseed, txt_total_ta7seel, txt_total_5sm, txt_total_metg3, txt_total_rd, txt_safi };
+            
+            foreach (TextBox textBox in summaryBoxes)
+            {
+                if (textBox != null)
+                {
+                    textBox.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                    textBox.TextAlign = HorizontalAlignment.Center;
+                    textBox.ReadOnly = true;
+                    textBox.BorderStyle = BorderStyle.FixedSingle;
+                    
+                    // Apply semantic colors based on content
+                    if (textBox == txt_total_bee3 || textBox == txt_total_first_rseed || textBox == txt_total_rd)
+                    {
+                        textBox.BackColor = Color.FromArgb(220, 248, 198); // Light green for positive amounts
+                        textBox.ForeColor = Color.FromArgb(39, 174, 96); // Dark green text
+                    }
+                    else if (textBox == txt_total_ta7seel || textBox == txt_total_metg3 || textBox == txt_total_5sm)
+                    {
+                        textBox.BackColor = Color.FromArgb(255, 243, 205); // Light orange for payments/deductions
+                        textBox.ForeColor = Color.FromArgb(230, 126, 34); // Dark orange text
+                    }
+                    else if (textBox == txt_safi)
+                    {
+                        textBox.BackColor = Color.FromArgb(248, 215, 218); // Light red for remaining balance
+                        textBox.ForeColor = Color.FromArgb(220, 53, 69); // Dark red text
+                    }
+                }
+            }
+        }
+        
+        private void StyleDataGridViews()
+        {
+            if (dataGridView1 != null)
+            {
+                ModernTheme.StyleDataGridView(dataGridView1);
+            }
+            
+            if (dgv_cstmrs != null)
+            {
+                ModernTheme.StyleDataGridView(dgv_cstmrs);
+            }
         }
         public List<DateTime> get_dates_between(DateTime startDate, DateTime endDate)
         {
