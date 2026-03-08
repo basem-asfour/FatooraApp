@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -141,11 +141,11 @@ namespace WindowsFormsApplication2.BL
             DAL.executecommand("ad_order", param);
             DAL.close();
         }
-        public void add_order_details(int id_order, int id_product, int qte, string price, double disc, string pmsthlk, string totalp, string msdd, string mtbki)
+        public void add_order_details(int id_order, int id_product, int qte, string price, double disc, string pmsthlk, string totalp, string msdd, string mtbki, string serials = null)
         {
             DAL.DATAaccesslayer DAL = new DAL.DATAaccesslayer();
             DAL.open();
-            SqlParameter[] param = new SqlParameter[9];
+            SqlParameter[] param = new SqlParameter[10];
 
             param[0] = new SqlParameter("@id_order", SqlDbType.Int);
             param[0].Value = id_order;
@@ -165,6 +165,8 @@ namespace WindowsFormsApplication2.BL
             param[7].Value = msdd;
             param[8] = new SqlParameter("@mtbki", SqlDbType.VarChar, 50);
             param[8].Value = mtbki;
+            param[9] = new SqlParameter("@serials", SqlDbType.NVarChar, -1);
+            param[9].Value = (object)serials ?? DBNull.Value;
 
             DAL.executecommand("add_order_details", param);
             DAL.close();

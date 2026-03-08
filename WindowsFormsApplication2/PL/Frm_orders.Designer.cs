@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2.PL
+namespace WindowsFormsApplication2.PL
 {
     partial class Frm_orders
     {
@@ -200,7 +200,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
@@ -262,7 +262,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.txt_rseed_sabek);
@@ -288,7 +288,7 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(187)))), ((int)(((byte)(120)))));
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.Location = new System.Drawing.Point(3, 9);
             this.button6.Margin = new System.Windows.Forms.Padding(4);
@@ -301,7 +301,7 @@
             // 
             // txt_rseed_sabek
             // 
-            this.txt_rseed_sabek.BackColor = System.Drawing.Color.PowderBlue;
+            this.txt_rseed_sabek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.txt_rseed_sabek.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_rseed_sabek.Location = new System.Drawing.Point(3, 80);
             this.txt_rseed_sabek.Margin = new System.Windows.Forms.Padding(4);
@@ -323,7 +323,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(187)))), ((int)(((byte)(120)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(9, 9);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
@@ -430,9 +430,13 @@
             // dgvproducts
             // 
             this.dgvproducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvproducts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.dgvproducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvproducts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvproducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvproducts.ColumnHeadersVisible = false;
             this.dgvproducts.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvproducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.dgvproducts.Location = new System.Drawing.Point(166, 118);
             this.dgvproducts.Margin = new System.Windows.Forms.Padding(4);
             this.dgvproducts.MultiSelect = false;
@@ -448,6 +452,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.BackColor = System.Drawing.Color.White;
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.تعديلToolStripMenuItem,
@@ -479,7 +484,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Info;
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupBox3.Controls.Add(this.label31);
             this.groupBox3.Controls.Add(this.pictureBox5);
             this.groupBox3.Controls.Add(this.label28);
@@ -573,10 +578,10 @@
             // 
             // txt_rseed
             // 
-            this.txt_rseed.BackColor = System.Drawing.SystemColors.WindowText;
+            this.txt_rseed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.txt_rseed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_rseed.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_rseed.ForeColor = System.Drawing.Color.Aqua;
+            this.txt_rseed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.txt_rseed.Location = new System.Drawing.Point(84, 19);
             this.txt_rseed.Margin = new System.Windows.Forms.Padding(4);
             this.txt_rseed.Name = "txt_rseed";
@@ -599,9 +604,9 @@
             // 
             this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.BackColor = System.Drawing.SystemColors.WindowText;
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.comboBox2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.ForeColor = System.Drawing.Color.Lime;
+            this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(361, 17);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
@@ -622,7 +627,7 @@
             // 
             // label18
             // 
-            this.label18.BackColor = System.Drawing.Color.Red;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Location = new System.Drawing.Point(334, 61);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -634,7 +639,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGreen;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(187)))), ((int)(((byte)(120)))));
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
@@ -661,7 +666,7 @@
             // 
             // label15
             // 
-            this.label15.BackColor = System.Drawing.Color.Red;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label15.Location = new System.Drawing.Point(470, 61);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -686,7 +691,7 @@
             // 
             // label14
             // 
-            this.label14.BackColor = System.Drawing.Color.Red;
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.Location = new System.Drawing.Point(577, 61);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -710,7 +715,7 @@
             // 
             // label13
             // 
-            this.label13.BackColor = System.Drawing.Color.Red;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label13.Location = new System.Drawing.Point(688, 61);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -732,7 +737,7 @@
             // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.Red;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Location = new System.Drawing.Point(792, 61);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -754,7 +759,7 @@
             // 
             // label11
             // 
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Location = new System.Drawing.Point(168, 61);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -776,7 +781,7 @@
             // 
             // label10
             // 
-            this.label10.BackColor = System.Drawing.Color.Red;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Location = new System.Drawing.Point(1054, 61);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -788,7 +793,7 @@
             // 
             // btnprnt
             // 
-            this.btnprnt.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnprnt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(126)))), ((int)(((byte)(234)))));
             this.btnprnt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnprnt.Enabled = false;
             this.btnprnt.Location = new System.Drawing.Point(771, 119);
@@ -890,7 +895,7 @@
             // 
             // txtmksb
             // 
-            this.txtmksb.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtmksb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtmksb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtmksb.Location = new System.Drawing.Point(15, 69);
             this.txtmksb.Margin = new System.Windows.Forms.Padding(4);
@@ -927,7 +932,7 @@
             // 
             // txt_total_after_5sm
             // 
-            this.txt_total_after_5sm.BackColor = System.Drawing.Color.LightCyan;
+            this.txt_total_after_5sm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.txt_total_after_5sm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_total_after_5sm.Location = new System.Drawing.Point(292, 82);
             this.txt_total_after_5sm.Margin = new System.Windows.Forms.Padding(4);
@@ -962,7 +967,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupBox4.Controls.Add(this.btnnew);
             this.groupBox4.Controls.Add(this.txt_transport);
             this.groupBox4.Controls.Add(this.btnsve);
@@ -1016,7 +1021,7 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.groupBox8.Controls.Add(this.radioButton_number);
             this.groupBox8.Controls.Add(this.radioButton_nesba);
             this.groupBox8.Controls.Add(this.txt_total_5sm);
@@ -1032,10 +1037,10 @@
             // 
             // radioButton_number
             // 
-            this.radioButton_number.BackColor = System.Drawing.Color.Navy;
+            this.radioButton_number.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
             this.radioButton_number.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioButton_number.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_number.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.radioButton_number.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(46)))), ((int)(((byte)(129)))));
             this.radioButton_number.Location = new System.Drawing.Point(11, 17);
             this.radioButton_number.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_number.Name = "radioButton_number";
@@ -1048,10 +1053,10 @@
             // 
             // radioButton_nesba
             // 
-            this.radioButton_nesba.BackColor = System.Drawing.Color.Navy;
+            this.radioButton_nesba.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
             this.radioButton_nesba.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioButton_nesba.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_nesba.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.radioButton_nesba.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(46)))), ((int)(((byte)(129)))));
             this.radioButton_nesba.Location = new System.Drawing.Point(164, 17);
             this.radioButton_nesba.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_nesba.Name = "radioButton_nesba";
@@ -1095,7 +1100,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupBox5.Controls.Add(this.pictureBox3);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.bunifuiOSSwitch1);
@@ -1167,7 +1172,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.groupBox6.Controls.Add(this.pictureBox4);
             this.groupBox6.Controls.Add(this.radioButton2not3mel);
             this.groupBox6.Controls.Add(this.label9);
@@ -1184,9 +1189,9 @@
             // 
             // label30
             // 
-            this.label30.BackColor = System.Drawing.SystemColors.WindowText;
+            this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
             this.label30.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Lime;
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(46)))), ((int)(((byte)(129)))));
             this.label30.Location = new System.Drawing.Point(8, 11);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
@@ -1207,10 +1212,10 @@
             // 
             // txt_serial
             // 
-            this.txt_serial.BackColor = System.Drawing.SystemColors.WindowText;
+            this.txt_serial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txt_serial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_serial.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_serial.ForeColor = System.Drawing.Color.Lime;
+            this.txt_serial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.txt_serial.Location = new System.Drawing.Point(853, 19);
             this.txt_serial.Margin = new System.Windows.Forms.Padding(4);
             this.txt_serial.Name = "txt_serial";
@@ -1221,8 +1226,9 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.Navy;
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(70)))), ((int)(((byte)(229)))));
             this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1240,8 +1246,9 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.Navy;
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(102)))), ((int)(((byte)(241)))));
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1259,8 +1266,9 @@
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.Navy;
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(102)))), ((int)(((byte)(241)))));
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1278,8 +1286,9 @@
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.Navy;
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(70)))), ((int)(((byte)(229)))));
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1297,8 +1306,9 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.Navy;
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(102)))), ((int)(((byte)(241)))));
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1316,8 +1326,9 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.Navy;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(70)))), ((int)(((byte)(229)))));
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1346,7 +1357,7 @@
             // 
             // radioButton2not3mel
             // 
-            this.radioButton2not3mel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.radioButton2not3mel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(253)))), ((int)(((byte)(244)))));
             this.radioButton2not3mel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioButton2not3mel.Image = global::WindowsFormsApplication2.Properties.Resources.wallet;
             this.radioButton2not3mel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1362,7 +1373,7 @@
             // 
             // radioButtonamel
             // 
-            this.radioButtonamel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.radioButtonamel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(253)))), ((int)(((byte)(244)))));
             this.radioButtonamel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioButtonamel.Image = global::WindowsFormsApplication2.Properties.Resources.male;
             this.radioButtonamel.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -1428,10 +1439,10 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(187)))), ((int)(((byte)(120)))));
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Green;
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = global::WindowsFormsApplication2.Properties.Resources.add_item;
             this.button3.Location = new System.Drawing.Point(84, 59);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
@@ -1444,7 +1455,7 @@
             // 
             // btndel
             // 
-            this.btndel.BackColor = System.Drawing.Color.MistyRose;
+            this.btndel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.btndel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btndel.Image = global::WindowsFormsApplication2.Properties.Resources.remove_item1;
             this.btndel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1470,7 +1481,7 @@
             // 
             // btnnew
             // 
-            this.btnnew.BackColor = System.Drawing.Color.SpringGreen;
+            this.btnnew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(187)))), ((int)(((byte)(120)))));
             this.btnnew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnnew.Image = global::WindowsFormsApplication2.Properties.Resources.shopping_cart_add2;
             this.btnnew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1487,7 +1498,7 @@
             // 
             // btnsve
             // 
-            this.btnsve.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnsve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(159)))), ((int)(((byte)(67)))));
             this.btnsve.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnsve.Enabled = false;
             this.btnsve.Image = global::WindowsFormsApplication2.Properties.Resources.shopping_cart_accept1;
@@ -1504,7 +1515,7 @@
             // 
             // label19
             // 
-            this.label19.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1522,7 +1533,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_close_48;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1540,6 +1551,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1334, 833);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.button11);

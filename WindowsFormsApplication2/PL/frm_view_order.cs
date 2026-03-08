@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -172,196 +172,396 @@ namespace WindowsFormsApplication2.PL
         private void frm_view_order_Load(object sender, EventArgs e)
         {
             this.dataGridView1.Columns[1].Width = 200;
-
+            dataGridView4.SendToBack();
+            dataGridView5.SendToBack();
+            dataGridView6.SendToBack();
+            dataGridView7.SendToBack();
+            dataGridView7_new_orders.SendToBack();
+            dataGridView8_cstmr_id.SendToBack();
         }
         public int i = -1;
         public int ii = -1;
         public int mslsl = 0;
         public int page_num = 0;
+
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             i++;
             ii++;
             page_num++;
-            Font f=new Font(Program.PrintFontType,16,FontStyle.Bold);
-            Font v = new Font(Program.PrintFontType, 30, FontStyle.Bold);
-            Font n = new Font(Program.PrintFontType, 14, FontStyle.Regular);
-            Font col_header = new Font(Program.PrintFontType, 16, FontStyle.Underline);
 
-            float marg=20;
-            string idorder ="رقم الفاتورة : " + txtordr_id.Text;
-            string cstname = "اسم العميل: " + txtcstmr_name.Text;
-            string datee = "التاريخ : " + txtdate.Text;
-            string bayea = "اسم البائع: " + txtbaya.Text;
-            string totalP = "اجمالي الفاتورة : " + txttotal.Text;//////////////////////
+            const float marg = 30f;
+            const float rowHeight = 26f;
+            const int maxRowsPerPage = 26;
+            float pageW = e.PageBounds.Width;
+            float pageH = e.PageBounds.Height;
+            float tableWidth = pageW - marg * 2;
+            float tableLeft = marg;
+            float tableRight = pageW - marg;
 
-            double rseed_sabek = 0;
-              // for (int i = 0; i < dataGridView7.Rows.Count - 1; i++)
-              // {
-              //      rseed_sabek += Convert.ToDouble(dataGridView7.Rows[i].Cells[0].Value);
+            // RTL column proportions (right to left): م | الكود | اسم الصنف | الكميه | السعر | السعر الكلي
+            float[] colRatios = { 0.05f, 0.09f, 0.42f, 0.10f, 0.14f, 0.20f };
+            float[] colX = new float[7]; // 7 edges for 6 columns
+            colX[0] = tableRight;
+            for (int c = 0; c < 6; c++)
+                colX[c + 1] = colX[c] - tableWidth * colRatios[c];
+            string[] colHeaders = { "م", "الكود", "اسم الصنف", "الكميه", "السعر", "السعر الكلي" };
 
-              //}
-            rseed_sabek = (from DataGridViewRow row in dataGridView7.Rows
-                           where row.Cells[0].FormattedValue.ToString() != string.Empty
-                           select Convert.ToDouble(row.Cells[0].FormattedValue)).Sum();
-                
-                
-            
-            double egmali=Convert.ToDouble(txttotal.Text)+rseed_sabek;
-            //string pmsdd = "حساب سابق : " + rseed_sabek.ToString();
-            string pmsdd ="مبلغ مسدد :" +dataGridView2.Rows[0].Cells[0].Value.ToString();
-            string pmtpkii = "المبلغ المتبقي :" + dataGridView3.Rows[0].Cells[0].Value.ToString();
-           // string pmtpkii = "اجمالي : " + egmali.ToString();
-            string cstmr_adress = "عنوان العميل :" + dataGridView4.Rows[0].Cells[0].Value.ToString();
+            Font fontTitle = new Font(Program.PrintFontType, 20, FontStyle.Bold);
+            Font fontSub = new Font(Program.PrintFontType, 9, FontStyle.Regular);
+            Font fontHeader = new Font(Program.PrintFontType, 10, FontStyle.Bold);
+            Font fontBody = new Font(Program.PrintFontType, 10, FontStyle.Regular);
+            Font fontFooter = new Font(Program.PrintFontType, 8, FontStyle.Regular);
+            Font fontTotals = new Font(Program.PrintFontType, 10, FontStyle.Bold);
 
-            SizeF fontsizeNO = e.Graphics.MeasureString(idorder, f);
-            SizeF fontsizename = e.Graphics.MeasureString(cstname, f);
-            SizeF fontsizedate = e.Graphics.MeasureString(datee, f);
-            SizeF fontsizebayea = e.Graphics.MeasureString(bayea, f);
-            SizeF fontsizetotalP = e.Graphics.MeasureString(totalP, f);
-            SizeF FpntSizePmsdd = e.Graphics.MeasureString(pmsdd, f);
-            SizeF FpntSizePmtpkii = e.Graphics.MeasureString(pmtpkii, f);
-            SizeF fontsizeadrss = e.Graphics.MeasureString(cstmr_adress, f);
+            Color colorPrimary = Color.FromArgb(44, 62, 80);
+            Color colorHeaderBg = Color.FromArgb(245, 246, 248);
+            Color colorRowAlt = Color.FromArgb(252, 252, 254);
+            Color colorLine = Color.FromArgb(210, 210, 210);
+            Color colorAccent = Color.FromArgb(41, 128, 185);
+            SolidBrush brushPrimary = new SolidBrush(colorPrimary);
+            SolidBrush brushText = new SolidBrush(Color.FromArgb(60, 60, 60));
+            SolidBrush brushLight = new SolidBrush(Color.FromArgb(120, 120, 120));
+            Pen penLine = new Pen(colorLine, 0.6f);
+            Pen penAccent = new Pen(colorAccent, 1.2f);
 
-            if (page_num==1)
+            StringFormat sfCenter = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+            StringFormat sfRight = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
+
+            try
             {
+                float y = marg;
 
-
-                e.Graphics.DrawString(Program.company_name, v, Brushes.DarkBlue, 30, 2);
-                e.Graphics.DrawString(Program.details_1, f, Brushes.DarkBlue, marg, marg + fontsizebayea.Height+2);
-                e.Graphics.DrawString(Program.details_2, f, Brushes.DarkBlue, marg, marg + (fontsizebayea.Height * 2));
-                e.Graphics.DrawString(Program.telephon_1, f, Brushes.Black, marg, marg + (fontsizebayea.Height * 3) );
-                e.Graphics.DrawString(Program.telephon_2, f, Brushes.Black, marg, marg + fontsizebayea.Height * 4 );
-                //e.Graphics.DrawString(" للأدوات الصحية ", f, Brushes.BlueViolet, marg, marg + fontsizebayea.Height)
- //e.Graphics.DrawString("والمواسير الألمانية وأنظمة المياة", f, Brushes.BlueViolet, marg, marg + fontsizebayea.Height * 2);
-                //e.Graphics.DrawString("الحاج/مصطفي/01022070794", f, Brushes.Black, marg, marg + fontsizebayea.Height * 3);
-                //e.Graphics.DrawString("م/ادهم/01281658077", f, Brushes.Black, marg, marg + fontsizebayea.Height * 4 );
-
-
-
-                e.Graphics.DrawString("رقم الفاتورة : " + txtordr_id.Text, f, Brushes.DarkBlue, (e.PageBounds.Width - fontsizeNO.Width) - marg, marg);
-                e.Graphics.DrawString(datee, f, Brushes.Black, (e.PageBounds.Width - fontsizedate.Width) - marg, marg + fontsizeNO.Height);
-                e.Graphics.DrawString(cstname, f, Brushes.Black, (e.PageBounds.Width - fontsizename.Width) - marg, marg + fontsizeNO.Height + fontsizedate.Height);
-                e.Graphics.DrawString(cstmr_adress, f, Brushes.Black, (e.PageBounds.Width - fontsizeadrss.Width) - marg, marg + fontsizeNO.Height + fontsizedate.Height + fontsizename.Height);
-                e.Graphics.DrawString(bayea, f, Brushes.Black, (e.PageBounds.Width - fontsizebayea.Width) - marg, marg + fontsizeNO.Height + fontsizedate.Height + fontsizename.Height + fontsizeadrss.Height);
-
-            }
-
-           
-            e.Graphics.DrawString(totalP, f, Brushes.Black, e.PageBounds.Width - marg*2-200, e.PageBounds.Height - marg*3);
-            e.Graphics.DrawString(pmsdd, f, Brushes.Black, e.PageBounds.Width - marg-260-200, e.PageBounds.Height - marg*3);
-            e.Graphics.DrawString(pmtpkii, f, Brushes.Black, e.PageBounds.Width - marg - 520-200, e.PageBounds.Height - marg*3);
-
-
-
-            //e.Graphics.DrawLine(Pens.DarkBlue, marg, e.PageBounds.Height - 35, e.PageBounds.Width - (marg), e.PageBounds.Height - 35);
-            e.Graphics.FillRectangle(Brushes.WhiteSmoke, new Rectangle(0, e.PageBounds.Height - 30, (int)(e.PageBounds.Width), e.PageBounds.Bottom));
-            e.Graphics.DrawString("صفحة : " + page_num, f, Brushes.DarkBlue, marg, e.PageBounds.Height - 30);
-            e.Graphics.DrawString(Program.FooterInvoiceText, n, Brushes.Black, (e.PageBounds.Width / 6) + 20, e.PageBounds.Height - 30);
-
-
-            float prehights = marg + fontsizeNO.Height + fontsizename.Height + fontsizedate.Height + fontsizebayea.Height+30;
-
-            //المستطيل
-           // e.Graphics.DrawRectangle(Pens.Black, marg, prehights, e.PageBounds.Width - marg * 2, e.PageBounds.Height - marg*2-30 -prehights);
-           
-            float colhight = 45;
-
-            float colwidth1 = 50;
-            float colwidth2 = 300 + colwidth1;
-            float colwidth3 = 70 + colwidth2;
-            float colwidth4 = 50 + colwidth3;
-            float colwidth5 = 50 + colwidth4;
-            float colwidth6 = 50 + colwidth5;
-            if (page_num!=1)
-            {
-                prehights = 20;
-               //colhight = 0;
-            }
-
-
-            ////////////////////////////////////////////
-            float rowshight = 55;
-            //int i = 0
-            for (; i < dataGridView1.Rows.Count-1; i++)
-            {
-
-                e.Graphics.DrawString((i + 1).ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 20, prehights + 30 + rowshight - 36);
-               
-
-                e.Graphics.DrawString(dataGridView1.Rows[i].Cells[0].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 -69, prehights + 30 + rowshight-4-35);
-               e.Graphics.DrawString(dataGridView1.Rows[i].Cells[1].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 30 - 300, prehights + 30 + rowshight-5-35);
-                e.Graphics.DrawString(dataGridView1.Rows[i].Cells[2].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 30 - 300 - 56 - 20, prehights + 30 + rowshight-5-35);
-               e.Graphics.DrawString(dataGridView1.Rows[i].Cells[3].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 30 - 300 - 111 - 56, prehights + 30 + rowshight-5-35);
-                e.Graphics.DrawString(dataGridView1.Rows[i].Cells[6].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 -300 - 111 - 111 - 111, prehights + 30 + rowshight-5-35);
-              // e.Graphics.DrawString(this.dataGridView1.Rows[i].Cells[6].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 300 - 111 - 111 - 111 - 56 - 40, prehights + 30 + rowshight-5-35);
-                e.Graphics.DrawLine(Pens.Black, marg, prehights + colhight+rowshight-30, e.PageBounds.Width - marg , prehights + colhight+rowshight-30);
-                rowshight += 30;
-                if ((i % 29) == 0 && i != 0)
+                // ===== PAGE 1 HEADER =====
+                if (page_num == 1)
                 {
-                    e.HasMorePages = true;
-                    break;
+                    // Logo (centered, aspect-ratio preserved)
+                    if (Program.PrintWaterMarkImageSource != null)
+                    {
+                        try
+                        {
+                            using (var src = new Bitmap(Program.PrintWaterMarkImageSource))
+                            {
+                                int maxLogoH = 60;
+                                float aspect = (float)src.Width / src.Height;
+                                int logoH = maxLogoH;
+                                int logoW = (int)(logoH * aspect);
+                                if (logoW > 120) { logoW = 120; logoH = (int)(logoW / aspect); }
+                                int logoX = (int)(pageW / 2 - logoW / 2);
+                                e.Graphics.DrawImage(src, logoX, (int)y, logoW, logoH);
+                                y += logoH + 6f;
+                            }
+                        }
+                        catch { y += 6f; }
+                    }
+
+                    // Company name (centered)
+                    e.Graphics.DrawString(Program.company_name, fontTitle, brushPrimary, pageW / 2f, y, sfCenter);
+                    y += fontTitle.Height + 6f;
+
+                    // Two-column info: company details (left) | invoice details (right)
+                    float infoTop = y;
+                    float leftX = marg + 4f;
+                    float rightX = pageW - marg - 4f;
+                    StringFormat sfLeftAlign = new StringFormat { LineAlignment = StringAlignment.Near };
+
+                    e.Graphics.DrawString(Program.details_1 ?? "", fontSub, brushLight, leftX, y, sfLeftAlign);
+                    y += fontSub.Height + 1f;
+                    e.Graphics.DrawString(Program.details_2 ?? "", fontSub, brushLight, leftX, y, sfLeftAlign);
+                    y += fontSub.Height + 1f;
+                    e.Graphics.DrawString(Program.telephon_1 ?? "", fontSub, brushLight, leftX, y, sfLeftAlign);
+                    y += fontSub.Height + 1f;
+                    e.Graphics.DrawString(Program.telephon_2 ?? "", fontSub, brushLight, leftX, y, sfLeftAlign);
+
+                    float ry = infoTop;
+                    e.Graphics.DrawString("فاتورة رقم : " + txtordr_id.Text, fontHeader, new SolidBrush(colorAccent), rightX, ry, new StringFormat { Alignment = StringAlignment.Far });
+                    ry += fontHeader.Height + 3f;
+                    e.Graphics.DrawString("التاريخ : " + txtdate.Text, fontSub, brushText, rightX, ry, new StringFormat { Alignment = StringAlignment.Far });
+                    ry += fontSub.Height + 2f;
+                    e.Graphics.DrawString("العميل : " + txtcstmr_name.Text, fontSub, brushText, rightX, ry, new StringFormat { Alignment = StringAlignment.Far });
+                    ry += fontSub.Height + 2f;
+                    if (dataGridView4.Rows.Count > 0 && dataGridView4.Rows[0].Cells[0].Value != null)
+                    {
+                        e.Graphics.DrawString("العنوان : " + dataGridView4.Rows[0].Cells[0].Value.ToString(), fontSub, brushText, rightX, ry, new StringFormat { Alignment = StringAlignment.Far });
+                        ry += fontSub.Height + 2f;
+                    }
+                    e.Graphics.DrawString("البائع : " + txtbaya.Text, fontSub, brushText, rightX, ry, new StringFormat { Alignment = StringAlignment.Far });
+
+                    y = Math.Max(y, ry) + fontSub.Height + 10f;
+
+                    // Accent line separator
+                    e.Graphics.DrawLine(penAccent, marg, y, pageW - marg, y);
+                    y += 12f;
                 }
-           }
-            //////////
-            var verticalLineHeight = prehights  + rowshight -13;
-            e.Graphics.FillRectangle(Brushes.WhiteSmoke, new Rectangle((int)marg, (int)prehights, (int)(e.PageBounds.Width - marg * 2), 45));
-            e.Graphics.DrawRectangle(Pens.Black, marg, prehights, e.PageBounds.Width - marg * 2, rowshight -14);
-
-
-            e.Graphics.DrawLine(Pens.Black, marg, prehights + colhight, e.PageBounds.Width - marg, prehights + colhight);
-
-            e.Graphics.DrawString("م", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 20, prehights + 15);
-            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - marg * 2 - 24, prehights, e.PageBounds.Width - marg * 2 - 24, verticalLineHeight);
-
-
-            e.Graphics.DrawString("الكود", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 65, prehights + 15);
-            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - marg * 2 - 70, prehights, e.PageBounds.Width - marg * 2 - 70, verticalLineHeight);
-
-            e.Graphics.DrawString("اسم الصنف", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 30 - 220, prehights + 20);
-            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - marg * 2 - colwidth2, prehights, e.PageBounds.Width - marg * 2 - colwidth2, verticalLineHeight);
-
-            e.Graphics.DrawString("الكميه", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 30 - 300 - 56 - 20, prehights + 20);
-            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - marg * 2 - colwidth3, prehights, e.PageBounds.Width - marg * 2 - colwidth3, verticalLineHeight);
-
-            e.Graphics.DrawString("السعر", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 30 - 300 - 111 - 56, prehights + 20);
-            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - marg * 2 - colwidth3 - 80, prehights, e.PageBounds.Width - marg * 2 - colwidth3 - 80, verticalLineHeight);
-
-
-            e.Graphics.DrawString("السعر الكلي", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 300 - 111 - 111 - 111, prehights + 20);
-
-
-            e.Graphics.DrawString(" ملاحظات", f, Brushes.Black, e.PageBounds.Width - marg * 2 - 300 - 111 - 111 - 111 - 56 - 50, prehights + 20);
-            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - marg * 2 - colwidth3 - 222, prehights, e.PageBounds.Width - marg * 2 - colwidth3 - 222, verticalLineHeight);
-
-
-
-            ColorMatrix matrix = new ColorMatrix();
-            matrix.Matrix33 = (float)0.2;
-            ImageAttributes attr = new ImageAttributes();
-            attr.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-            var src_water_mark = new Bitmap(Program.PrintWaterMarkImageSource);
-            e.Graphics.DrawImage(src_water_mark, new Rectangle((e.PageBounds.Width / 2) - 200, (e.PageBounds.Height / 2) - 250, 400, 400), 0, 0, src_water_mark.Width, src_water_mark.Height, GraphicsUnit.Pixel, attr);
-
-            //top image
-            if (page_num ==1)
-            {
-                int logo_width = 120;
-                int logo_height = 120;
-                using (var src = new Bitmap(Program.PrintWaterMarkImageSource))
-                using (var bmp = new Bitmap(100, 100, PixelFormat.Format32bppPArgb))
-                using (var gr = Graphics.FromImage(bmp))
+                else
                 {
-                    gr.Clear(Color.Wheat);
-                    //image with opacity
+                    y = marg + 8f;
+                }
 
-                    ////////
-                    //image
-                    e.Graphics.DrawImage(src, new Rectangle((int)(e.PageBounds.Width/2)-(logo_width/2), 10, logo_width, logo_height));
-                    //  bmp.Save("D:/result.jpg",ImageFormat.Jpeg);
+                // ===== TABLE HEADER =====
+                float headerY = y;
+                float headerH = 28f;
+                e.Graphics.FillRectangle(new SolidBrush(colorHeaderBg), tableLeft, headerY, tableWidth, headerH);
+
+                for (int c = 0; c < 6; c++)
+                {
+                    float cx = (colX[c] + colX[c + 1]) / 2f;
+                    RectangleF cellRect = new RectangleF(colX[c + 1], headerY, colX[c] - colX[c + 1], headerH);
+                    e.Graphics.DrawString(colHeaders[c], fontHeader, brushPrimary, cellRect, sfCenter);
+                }
+                e.Graphics.DrawLine(penAccent, tableLeft, headerY + headerH, tableRight, headerY + headerH);
+
+                y = headerY + headerH;
+                int rowsOnThisPage = 0;
+
+                // ===== DATA ROWS =====
+                for (; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    float rowY = y + rowsOnThisPage * rowHeight;
+
+                    if (rowsOnThisPage % 2 == 1)
+                        e.Graphics.FillRectangle(new SolidBrush(colorRowAlt), tableLeft, rowY, tableWidth, rowHeight);
+
+                    string[] vals = {
+                        (i + 1).ToString(),
+                        dataGridView1.Rows[i].Cells[0].Value?.ToString() ?? "",
+                        dataGridView1.Rows[i].Cells[1].Value?.ToString() ?? "",
+                        dataGridView1.Rows[i].Cells[2].Value?.ToString() ?? "",
+                        dataGridView1.Rows[i].Cells[3].Value?.ToString() ?? "",
+                        dataGridView1.Rows[i].Cells[6].Value?.ToString() ?? ""
+                    };
+
+                    for (int c = 0; c < 6; c++)
+                    {
+                        RectangleF cellRect = new RectangleF(colX[c + 1] + 2f, rowY, colX[c] - colX[c + 1] - 4f, rowHeight);
+                        e.Graphics.DrawString(vals[c], fontBody, brushText, cellRect, sfCenter);
+                    }
+
+                    e.Graphics.DrawLine(penLine, tableLeft, rowY + rowHeight, tableRight, rowY + rowHeight);
+
+                    rowsOnThisPage++;
+                    if (rowsOnThisPage >= maxRowsPerPage)
+                    {
+                        e.HasMorePages = true;
+                        break;
+                    }
+                }
+
+                float tableBottom = y + rowsOnThisPage * rowHeight;
+
+                // Vertical column lines
+                for (int c = 1; c < 6; c++)
+                    e.Graphics.DrawLine(penLine, colX[c], headerY, colX[c], tableBottom);
+                e.Graphics.DrawRectangle(new Pen(colorLine, 0.8f), tableLeft, headerY, tableWidth, tableBottom - headerY);
+
+                // ===== FOOTER: Totals =====
+                float footerY = pageH - marg - 56f;
+                e.Graphics.DrawLine(penLine, marg, footerY - 6f, pageW - marg, footerY - 6f);
+
+                string totalP = "اجمالي الفاتورة : " + txttotal.Text;
+                string pmsdd = dataGridView2.Rows.Count > 0 && dataGridView2.Rows[0].Cells[0].Value != null
+                    ? "مبلغ مسدد : " + dataGridView2.Rows[0].Cells[0].Value.ToString() : "مبلغ مسدد : —";
+                string pmtpkii = dataGridView3.Rows.Count > 0 && dataGridView3.Rows[0].Cells[0].Value != null
+                    ? "المبلغ المتبقي : " + dataGridView3.Rows[0].Cells[0].Value.ToString() : "المبلغ المتبقي : —";
+
+                // Three columns at footer: right = total, middle = paid, left = remaining
+                float third = tableWidth / 3f;
+                e.Graphics.DrawString(totalP, fontTotals, brushPrimary,
+                    new RectangleF(tableRight - third, footerY, third, 20f), sfCenter);
+                e.Graphics.DrawString(pmsdd, fontBody, brushText,
+                    new RectangleF(tableRight - third * 2, footerY, third, 20f), sfCenter);
+                e.Graphics.DrawString(pmtpkii, fontBody, brushText,
+                    new RectangleF(tableLeft, footerY, third, 20f), sfCenter);
+
+                // Page number + footer text
+                float bottomY = pageH - marg - 16f;
+                e.Graphics.DrawString("صفحة " + page_num, fontFooter, brushLight, marg, bottomY);
+                if (!string.IsNullOrEmpty(Program.FooterInvoiceText))
+                    e.Graphics.DrawString(Program.FooterInvoiceText, fontFooter, brushLight, pageW / 2f, bottomY, sfCenter);
+
+                // ===== WATERMARK (page 1 only, very subtle) =====
+                if (page_num == 1 && Program.PrintWaterMarkImageSource != null)
+                {
+                    try
+                    {
+                        using (var src = new Bitmap(Program.PrintWaterMarkImageSource))
+                        {
+                            float wmAspect = (float)src.Width / src.Height;
+                            int wmH = 280;
+                            int wmW = (int)(wmH * wmAspect);
+                            ColorMatrix matrix = new ColorMatrix();
+                            matrix.Matrix33 = 0.08f;
+                            ImageAttributes attr = new ImageAttributes();
+                            attr.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+                            e.Graphics.DrawImage(src,
+                                new Rectangle((int)(pageW - wmW) / 2, (int)(pageH - wmH) / 2, wmW, wmH),
+                                0, 0, src.Width, src.Height, GraphicsUnit.Pixel, attr);
+                        }
+                    }
+                    catch { }
                 }
             }
+            finally
+            {
+                fontTitle?.Dispose();
+                fontSub?.Dispose();
+                fontHeader?.Dispose();
+                fontBody?.Dispose();
+                fontFooter?.Dispose();
+                fontTotals?.Dispose();
+                brushPrimary?.Dispose();
+                brushText?.Dispose();
+                brushLight?.Dispose();
+                penLine?.Dispose();
+                penAccent?.Dispose();
+                sfCenter?.Dispose();
+                sfRight?.Dispose();
+            }
+        }
 
+        /// <summary>Gets the serial from order_details for thermal print. Uses only order_details.serials, not product_serials.</summary>
+        private string GetSerialForOrderLine(DataGridViewRow row)
+        {
+            if (row == null) return "";
+            var dt = dataGridView1.DataSource as DataTable;
+            if (dt == null) return "";
+            if (dt.Columns.Contains("serials"))
+            {
+                var v = row.Cells["serials"].Value;
+                if (v != null && !string.IsNullOrWhiteSpace(v.ToString())) return v.ToString().Trim();
+            }
+            if (dt.Columns.Contains("serial"))
+            {
+                var v = row.Cells["serial"].Value;
+                if (v != null && !string.IsNullOrWhiteSpace(v.ToString())) return v.ToString().Trim();
+            }
+            if (row.Cells.Count > 7)
+            {
+                var v = row.Cells[7].Value;
+                if (v != null && !string.IsNullOrWhiteSpace(v.ToString())) return v.ToString().Trim();
+            }
+            return "";
+        }
+
+        private void button_thermal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int w58 = (int)(58f / 25.4f * 100f);
+                try
+                {
+                    printDocumentThermal.PrinterSettings.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("58mm Thermal", w58, 5000);
+                }
+                catch { }
+                PrintDialog dlg = new PrintDialog { Document = printDocumentThermal };
+                if (dlg.ShowDialog() == DialogResult.OK)
+                    printDocumentThermal.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("خطأ في الطباعة: " + ex.Message, "طباعة حراري", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void printDocumentThermal_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float pageW = e.PageBounds.Width > 0 ? e.PageBounds.Width : 220f;
+            float W = Math.Min(215f, pageW - 10f);
+            float x = 5f, y = 4f;
+            Font fontTitle = new Font("Arial", 10, FontStyle.Bold);
+            Font fontBody = new Font("Arial", 8, FontStyle.Regular);
+            Font fontSmall = new Font("Arial", 7, FontStyle.Regular);
+            StringFormat sfCenter = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near };
+            StringFormat sfRight = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Near };
+
+            try
+            {
+                if (Program.PrintWaterMarkImageSource!=null)
+                {
+                    try
+                    {
+                        using (var logo = new Bitmap(Program.PrintWaterMarkImageSource))
+                        {
+                            int maxLogoW = 50;
+                            float aspect = (float)logo.Width / logo.Height;
+                            int logoW = maxLogoW;
+                            int logoH = (int)(logoW / aspect);
+                            if (logoH > 50) { logoH = 50; logoW = (int)(logoH * aspect); }
+                            float logoX = x + (W - 2 * x - logoW) / 2f;
+                            e.Graphics.DrawImage(logo, (int)logoX, (int)y, logoW, logoH);
+                            y += logoH + 4f;
+                        }
+                    }
+                    catch { }
+                }
+                e.Graphics.DrawString(Program.company_name ?? "", fontTitle, Brushes.Black, W / 2f, y, sfCenter);
+                y += fontTitle.Height + 2f;
+                e.Graphics.DrawString(Program.details_1 ?? "", fontSmall, Brushes.Black, W / 2f, y, sfCenter);
+                y += fontSmall.Height + 1f;
+                if (!string.IsNullOrEmpty(Program.details_2))
+                {
+                    e.Graphics.DrawString(Program.details_2 ?? "", fontSmall, Brushes.Black, W / 2f, y, sfCenter);
+                    y += fontSmall.Height + 1f;
+                }
+                string phones = string.Join("  ", new[] { Program.telephon_1 ?? "", Program.telephon_2 ?? "" }.Where(s => !string.IsNullOrEmpty(s)));
+                if (!string.IsNullOrEmpty(phones))
+                {
+                    e.Graphics.DrawString(phones, fontSmall, Brushes.Black, W / 2f, y, sfCenter);
+                    y += fontSmall.Height + 2f;
+                }
+                else
+                    y += 2f;
+                e.Graphics.DrawLine(Pens.Black, x, y, W - x, y);
+                y += 6f;
+
+                e.Graphics.DrawString("فاتورة #" + txtordr_id.Text, fontBody, Brushes.Black, W - x, y, sfRight);
+                y += fontBody.Height + 1f;
+                e.Graphics.DrawString(txtdate.Text, fontBody, Brushes.Black, W - x, y, sfRight);
+                y += fontBody.Height + 1f;
+                e.Graphics.DrawString("العميل: " + txtcstmr_name.Text, fontBody, Brushes.Black, W - x, y, sfRight);
+                y += fontBody.Height + 4f;
+                e.Graphics.DrawLine(Pens.Black, x, y, W - x, y);
+                y += 6f;
+
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    string name = dataGridView1.Rows[i].Cells[1].Value?.ToString() ?? "";
+                    string qty = dataGridView1.Rows[i].Cells[2].Value?.ToString() ?? "";
+                    string price = dataGridView1.Rows[i].Cells[3].Value?.ToString() ?? "";
+                    string total = dataGridView1.Rows[i].Cells[6].Value?.ToString() ?? "";
+                    string serial = GetSerialForOrderLine(dataGridView1.Rows[i]);
+
+                    e.Graphics.DrawString(name, fontBody, Brushes.Black, new RectangleF(x, y, W - 2 * x, 20f), sfRight);
+                    y += fontBody.Height + 2f;
+                    if (!string.IsNullOrEmpty(serial))
+                    {
+                        e.Graphics.DrawString("سيريال: " + serial, fontSmall, Brushes.DarkGray, new RectangleF(x, y, W - 2 * x, 16f), sfRight);
+                        y += fontSmall.Height + 2f;
+                    }
+                    e.Graphics.DrawString(qty + " x " + price + " = " + total, fontSmall, Brushes.Black, W - x, y, sfRight);
+                    y += fontSmall.Height + 6f;
+                }
+
+                e.Graphics.DrawLine(Pens.Black, x, y, W - x, y);
+                y += 6f;
+                e.Graphics.DrawString("الإجمالي: " + txttotal.Text, fontTitle, Brushes.Black, W - x, y, sfRight);
+                y += fontTitle.Height + 4f;
+                if (dataGridView2.Rows.Count > 0 && dataGridView2.Rows[0].Cells[0].Value != null)
+                    e.Graphics.DrawString("مسدد: " + dataGridView2.Rows[0].Cells[0].Value.ToString(), fontBody, Brushes.Black, W - x, y, sfRight);
+                y += fontBody.Height + 2f;
+                if (dataGridView3.Rows.Count > 0 && dataGridView3.Rows[0].Cells[0].Value != null)
+                    e.Graphics.DrawString("متبقي: " + dataGridView3.Rows[0].Cells[0].Value.ToString(), fontBody, Brushes.Black, W - x, y, sfRight);
+                y += fontBody.Height + 8f;
+                e.Graphics.DrawString("شكراً لتعاملكم معنا", fontSmall, Brushes.Black, W / 2f, y, sfCenter);
+            }
+            finally
+            {
+                fontTitle?.Dispose();
+                fontBody?.Dispose();
+                fontSmall?.Dispose();
+                sfCenter?.Dispose();
+                sfRight?.Dispose();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

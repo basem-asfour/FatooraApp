@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -106,6 +106,7 @@
     <Compile Include="BL\cls_mndobeen.cs" />
     <Compile Include="BL\cls_mwrdeen.cs" />
     <Compile Include="BL\cls_orders.cs" />
+    <Compile Include="BL\cls_product_serials.cs" />
     <Compile Include="BL\cls_products.cs" />
     <Compile Include="BL\cls_purchases.cs" />
     <Compile Include="BL\cls_stores.cs" />
@@ -417,6 +418,18 @@
     </Compile>
     <Compile Include="PL\frm_product_mrtg3.Designer.cs">
       <DependentUpon>frm_product_mrtg3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_product_serials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_product_serials.Designer.cs">
+      <DependentUpon>frm_product_serials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\frm_select_serial_for_order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frm_select_serial_for_order.Designer.cs">
+      <DependentUpon>frm_select_serial_for_order.cs</DependentUpon>
     </Compile>
     <Compile Include="PL\frm_profit_month.cs">
       <SubType>Form</SubType>

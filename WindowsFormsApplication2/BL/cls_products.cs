@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -513,11 +513,11 @@ namespace WindowsFormsApplication2.BL
             return dt;
 
         }
-        public void ad_product(string nme, int qte, string pshr, string pg, string pb,string pmsthlk, string tmd, byte[] img,string kind,string store, string serial)
+        public void ad_product(string nme, int qte, string pshr, string pg, string pb,string pmsthlk, string tmd, byte[] img,string kind,string store, string serial, int serialNumberMode = 0)
         {
             DAL.DATAaccesslayer DAL = new DAL.DATAaccesslayer();
             DAL.open();
-            SqlParameter[] param = new SqlParameter[11];
+            SqlParameter[] param = new SqlParameter[12];
 
             param[0] = new SqlParameter("@nme", SqlDbType.VarChar, 50);
             param[0].Value = nme;
@@ -541,6 +541,8 @@ namespace WindowsFormsApplication2.BL
             param[9].Value = store;
             param[10] = new SqlParameter("@serial", SqlDbType.NVarChar, 2000);
             param[10].Value = serial;
+            param[11] = new SqlParameter("@serial_number_mode", SqlDbType.TinyInt);
+            param[11].Value = serialNumberMode;
             DAL.executecommand("add_product", param);
             DAL.close();
         }
@@ -600,11 +602,11 @@ namespace WindowsFormsApplication2.BL
             return dt;
         }
         public void update_product(string nme, int qte, string pshr, string pg, string pb, string pmsthlk,
-              string tmd, byte[] img, string id, string kind, string store, string serial)
+              string tmd, byte[] img, string id, string kind, string store, string serial, int serialNumberMode = 0)
         {
             DAL.DATAaccesslayer DAL = new DAL.DATAaccesslayer();
             DAL.open();
-            SqlParameter[] param = new SqlParameter[12];
+            SqlParameter[] param = new SqlParameter[13];
 
             param[0] = new SqlParameter("@nme", SqlDbType.VarChar, 50);
             param[0].Value = nme;
@@ -630,6 +632,8 @@ namespace WindowsFormsApplication2.BL
             param[10].Value = store;
             param[11] = new SqlParameter("@serial", SqlDbType.NVarChar, 500);
             param[11].Value = serial;
+            param[12] = new SqlParameter("@serial_number_mode", SqlDbType.TinyInt);
+            param[12].Value = serialNumberMode;
             DAL.executecommand("update_product", param);
             DAL.close();
         }
@@ -701,6 +705,20 @@ namespace WindowsFormsApplication2.BL
             dt = DAL.selectData("get_single_product", param);
             DAL.close();
             return dt;
+        }
+        /// <summary>Returns serial_number_mode (0=OnePerProduct, 1=OnePerPiece) for a product. Returns 0 if column not found.</summary>
+        public int GetProductSerialNumberMode(string productId)
+        {
+            int id;
+            if (!int.TryParse(productId, out id)) return 0;
+            var dt = get_single_product(id);
+            if (dt.Rows.Count == 0) return 0;
+            if (dt.Columns.Contains("serial_number_mode"))
+            {
+                var v = dt.Rows[0]["serial_number_mode"];
+                if (v != null && v != DBNull.Value) return Convert.ToInt32(v);
+            }
+            return 0;
         }
         public void update_total_mdfo3_to_zero(int id)
         {

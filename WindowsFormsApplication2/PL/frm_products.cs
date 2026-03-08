@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,6 +37,7 @@ namespace WindowsFormsApplication2.PL
 
      
         BL.cls_products prd = new BL.cls_products();
+        BL.cls_product_serials prdSerials = new BL.cls_product_serials();
         BL.cls_purchases purch = new BL.cls_purchases();
         BL.cls_orders order = new BL.cls_orders();
         BL.cls_mwrdeen mwrd = new BL.cls_mwrdeen();
@@ -181,6 +182,12 @@ namespace WindowsFormsApplication2.PL
             frm.btnok.Text = "تحديث";
             frm.combo_stores.Text = this.dataGridView1.CurrentRow.Cells[12].Value.ToString();
             frm.txt_serial.Text = this.dataGridView1.CurrentRow.Cells[13].Value.ToString();
+            int serialMode = 0;
+            if (this.dataGridView1.Columns.Count > 14 && this.dataGridView1.CurrentRow.Cells[14].Value != null && !DBNull.Value.Equals(this.dataGridView1.CurrentRow.Cells[14].Value))
+            {
+                int.TryParse(this.dataGridView1.CurrentRow.Cells[14].Value.ToString(), out serialMode);
+            }
+            frm.SerialNumberModeForEdit = serialMode;
             try
             {
                 byte[] image = (byte[])prd.get_image_product(this.dataGridView1.CurrentRow.Cells[0].Value.ToString()).Rows[0][0];
@@ -196,6 +203,18 @@ namespace WindowsFormsApplication2.PL
             frm.ShowDialog();
             this.dataGridView1.DataSource = prd.get_all_products();
 
+        }
+
+        private void button_serials_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.Index < 0)
+            {
+                MessageBox.Show("يرجى اختيار صنف أولاً", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int productId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            frm_product_serials frm = new frm_product_serials(productId);
+            frm.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -260,6 +279,7 @@ namespace WindowsFormsApplication2.PL
                              select Convert.ToDouble(row.Cells[2].FormattedValue)).Sum().ToString();
         }
         int ii = -1;
+        List<(string code, string name, string serial)> barcodePrintList = new List<(string, string, string)>();
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             ii++;
@@ -1112,83 +1132,103 @@ namespace WindowsFormsApplication2.PL
         private void button10_Click(object sender, EventArgs e)
         {
             ii = -1;
+            barcodePrintList.Clear();
 
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = null;
-
-                string rowFilter = string.Format("[{0}] <>'' ", "سيريال");
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
-
-            string cont_products = (dataGridView1.Rows.Count - 1).ToString();
-            double cont = Convert.ToDouble(dataGridView1.Rows.Count - 1);
-            double ss = cont / 10;
-
-
-
-
-            double pages = Math.Ceiling(ss);
-
-
-
-            if (MessageBox.Show("عد الاصناف =" + cont_products + "\nعدد صفح الطباعه =" + pages.ToString() + "\n هل تريد الطباعة ؟؟", "عملية الطباعة", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            var dt = dataGridView1.DataSource as DataTable;
+            if (dt == null) return;
+            dt.DefaultView.RowFilter = null;
+            var productIdsWithSerialsTable = prdSerials.GetProductIdsThatHaveSerials();
+            string idCol = dt.Columns.Count > 0 ? dt.Columns[0].ColumnName : "id";
+            string rowFilter;
+            if (productIdsWithSerialsTable != null && productIdsWithSerialsTable.Count > 0)
             {
-                PrintDialog printDlg = new PrintDialog();
+                string idList = string.Join(",", productIdsWithSerialsTable);
+                rowFilter = string.Format("[{0}] <> '' OR [{1}] IN ({2})", "سيريال", idCol, idList);
+            }
+            else
+            {
+                rowFilter = string.Format("[{0}] <> ''", "سيريال");
+            }
+            dt.DefaultView.RowFilter = rowFilter;
 
+            // Build list: serial from grid column 13 + all serials from product_serials table (dedupe by serial text)
+            for (int r = 0; r < dataGridView1.Rows.Count - 1; r++)
+            {
+                string code = dataGridView1.Rows[r].Cells[0].Value?.ToString() ?? "";
+                string name = dataGridView1.Rows[r].Cells[1].Value?.ToString() ?? "";
+                string serialCol = dataGridView1.Rows[r].Cells[13].Value?.ToString()?.Trim() ?? "";
+                var added = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-                printDlg.AllowSelection = true;
+                if (!string.IsNullOrEmpty(serialCol))
+                {
+                    barcodePrintList.Add((code, name, serialCol));
+                    added.Add(serialCol);
+                }
 
-                printDlg.AllowSomePages = true;
-
-                //Call ShowDialog
-
-                if (printDlg.ShowDialog() == DialogResult.OK)
-
-                    printDocumentBarCode.Print();
-
-
+                int productId;
+                if (int.TryParse(code, out productId))
+                {
+                    DataTable dtSerials = prdSerials.GetSerialsByProduct(productId);
+                    if (dtSerials != null && dtSerials.Columns.Contains("serial"))
+                        foreach (DataRow row in dtSerials.Rows)
+                        {
+                            string s = row["serial"]?.ToString()?.Trim() ?? "";
+                            if (!string.IsNullOrEmpty(s) && !added.Contains(s))
+                            {
+                                barcodePrintList.Add((code, name, s));
+                                added.Add(s);
+                            }
+                        }
+                }
             }
 
+            int cont_products = barcodePrintList.Count;
+            double pages = Math.Ceiling(cont_products / 10.0);
 
+            if (MessageBox.Show("عدد الباركود/السيريالات = " + cont_products + "\nعدد صفحات الطباعة = " + pages.ToString() + "\nهل تريد الطباعة؟", "عملية الطباعة", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                PrintDialog printDlg = new PrintDialog();
+                printDlg.AllowSelection = true;
+                printDlg.AllowSomePages = true;
+                if (printDlg.ShowDialog() == DialogResult.OK)
+                    printDocumentBarCode.Print();
+            }
         }
 
         private void printDocumentBarCode_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            ii++;
-
+            if (ii < 0) ii = 0;
             Font BarCodeFont = new Font("3 of 9 Barcode", 50);
             Font n = new Font("Arial", 20, FontStyle.Regular);
-
             float marg = 0;
             float prehights = 0;
             float rowshight = 0;
-            for (; ii < dataGridView1.Rows.Count - 1; ii++)
+            int itemsOnPage = 0;
+            const int maxPerPage = 10;
+
+            for (; ii < barcodePrintList.Count; ii++)
             {
-                var BarCodeText = dataGridView1.Rows[ii].Cells[13].Value.ToString();
-                if (string.IsNullOrEmpty(BarCodeText))
-                {
-                    continue;
-                }
-                //e.Graphics.DrawString((ii + 1).ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 20, prehights + rowshight );
+                var item = barcodePrintList[ii];
+                string barCodeText = item.serial;
+                if (string.IsNullOrEmpty(barCodeText)) continue;
 
-                //
-                e.Graphics.DrawString(dataGridView1.Rows[ii].Cells[0].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 60, prehights  + rowshight +20);
-                e.Graphics.DrawString(dataGridView1.Rows[ii].Cells[1].Value.ToString(), n, Brushes.Black, e.PageBounds.Width - marg * 2 - 350, prehights  + rowshight +20);
-                e.Graphics.DrawString("*"+BarCodeText+"*", BarCodeFont, Brushes.Black,  marg , prehights  + rowshight +20 );
-
-                e.Graphics.DrawLine(Pens.Black, marg, prehights  + rowshight, e.PageBounds.Width - marg, prehights  + rowshight );
-
-                if (ii % 10 == 0 && ii >= 10)
-                {
-                    e.HasMorePages = true;
-                    break;
-                }
+                e.Graphics.DrawString(item.code, n, Brushes.Black, e.PageBounds.Width - marg * 2 - 60, prehights + rowshight + 20);
+                e.Graphics.DrawString(item.name, n, Brushes.Black, e.PageBounds.Width - marg * 2 - 350, prehights + rowshight + 20);
+                e.Graphics.DrawString("*" + barCodeText + "*", BarCodeFont, Brushes.Black, marg, prehights + rowshight + 20);
+                e.Graphics.DrawLine(Pens.Black, marg, prehights + rowshight, e.PageBounds.Width - marg, prehights + rowshight);
 
                 rowshight += 100;
-                /*    if (ii==cont_product)
-                    {
-                        ii = -1;
-                    }*/
+                itemsOnPage++;
+                if (itemsOnPage >= maxPerPage)
+                {
+                    ii++;
+                    e.HasMorePages = ii < barcodePrintList.Count;
+                    break;
+                }
             }
 
+            BarCodeFont?.Dispose();
+            n?.Dispose();
         }
     }
     }

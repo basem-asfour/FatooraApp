@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +18,8 @@ namespace WindowsFormsApplication2.PL
         public string state;// = "add";        
         public string mwrdnme = "";
         public string order_id_mwrd = "";
+        /// <summary>Serial number mode when opening for edit. 0=OnePerProduct, 1=OnePerPiece. Set by frm_products before ShowDialog.</summary>
+        public int SerialNumberModeForEdit { get; set; } = 0;
         BL.cls_products prd = new BL.cls_products();
         BL.cls_mwrdeen mwrd = new BL.cls_mwrdeen();
         BL.cls_purchases purch = new BL.cls_purchases();
@@ -136,7 +138,7 @@ namespace WindowsFormsApplication2.PL
                 byte[] byteimage = ms.ToArray();
 
 
-                prd.ad_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, comboBox1.Text,combo_stores.Text, txt_serial.Text);
+                prd.ad_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, comboBox1.Text,combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
 
                 MessageBox.Show("تمت الاضافه بنجاح", "عمليه الاضافه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frm_products frm = new frm_products();
@@ -158,7 +160,7 @@ namespace WindowsFormsApplication2.PL
                     double new_total_mdfo3=Math.Round( new_price_shr*((Convert.ToInt32(txtqte.Text)+
                         (Convert.ToInt32(dgv_pre_prd.Rows[0].Cells[2].Value)))),2);
                     prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text)+Convert.ToInt32(dgv_pre_prd.Rows[0].Cells[2].Value), new_price_shr.ToString(), txtpg.Text,
-                        txtpb.Text, txtmsthlk.Text, new_total_mdfo3.ToString(), byteimage, dgv_pre_prd.Rows[0].Cells[0].Value.ToString(), comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                        txtpb.Text, txtmsthlk.Text, new_total_mdfo3.ToString(), byteimage, dgv_pre_prd.Rows[0].Cells[0].Value.ToString(), comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                     /////////////////////////قالي الغي الاضافة في المشتريات من ادارة الاصناف
                     //purch.add_purshase(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text,
                     //    txttmd.Text, byteimage, comboBox1.Text, "0", "0", combo_stores.Text);
@@ -167,7 +169,7 @@ namespace WindowsFormsApplication2.PL
                 {
                     ///////////////////////////
                     prd.ad_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text,
-                        txttmd.Text, byteimage, comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                        txttmd.Text, byteimage, comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                     ////////////////////قالي الغي الاضافة في المشتريات من ادارة الاصناف
                     //purch.add_purshase(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text,
                     //    txttmd.Text, byteimage, comboBox1.Text, "0", "0", combo_stores.Text);
@@ -217,7 +219,7 @@ namespace WindowsFormsApplication2.PL
 		                 old_qte=0;
 	                }
                     prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text) + old_qte, new_price_shr.ToString(), txtpg.Text,
-                        txtpb.Text, txtmsthlk.Text, new_total_mdfo3.ToString(), byteimage, dgv_pre_prd.Rows[0].Cells[0].Value.ToString(), comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                        txtpb.Text, txtmsthlk.Text, new_total_mdfo3.ToString(), byteimage, dgv_pre_prd.Rows[0].Cells[0].Value.ToString(), comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                     /////////////////////////
                     purch.add_purshase(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text,
                         txttmd.Text, byteimage, comboBox1.Text, mwrdnme, order_id_mwrd, combo_stores.Text);
@@ -267,7 +269,7 @@ namespace WindowsFormsApplication2.PL
                     double new_total_mdfo3 =Math.Round(new_price_shr * ((Convert.ToInt32(txtqte.Text) +
                         (Convert.ToInt32(dgv_pre_prd.Rows[0].Cells[2].Value)))),2);
                     prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text) + Convert.ToInt32(dgv_pre_prd.Rows[0].Cells[2].Value), new_price_shr.ToString(), txtpg.Text,
-                        txtpb.Text, txtmsthlk.Text, new_total_mdfo3.ToString(), byteimage, dgv_pre_prd.Rows[0].Cells[0].Value.ToString(), comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                        txtpb.Text, txtmsthlk.Text, new_total_mdfo3.ToString(), byteimage, dgv_pre_prd.Rows[0].Cells[0].Value.ToString(), comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                     /////////////////////////
                     purch.add_purshase(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text,
                         txttmd.Text, byteimage, comboBox1.Text, mwrdnme, order_id_mwrd, combo_stores.Text);
@@ -324,7 +326,7 @@ namespace WindowsFormsApplication2.PL
 
                 prd.update_prd_name(txtnme.Text, Convert.ToInt32(ID));
                 
-                prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, ID, comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, ID, comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                 //string single= purch.get_single_purchase_id(txtnme.Text).Rows[0][0].ToString();
 
                 MessageBox.Show("تم التعديل بنجاح", "عمليه التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -344,7 +346,7 @@ namespace WindowsFormsApplication2.PL
                 //  MessageBox.Show(ID);
                 prd.update_prd_name(txtnme.Text, Convert.ToInt32(ID));
 
-                prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, ID, comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, ID, comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                // string single = purch.get_single_purchase_id(txtnme.Text).Rows[0][0].ToString();
 
                 MessageBox.Show("تم التعديل بنجاح", "عمليه التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -374,7 +376,7 @@ namespace WindowsFormsApplication2.PL
                 //  MessageBox.Show(ID);
                 prd.update_prd_name(txtnme.Text, Convert.ToInt32(ID));
 
-                prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, ID, comboBox1.Text, combo_stores.Text, txt_serial.Text);
+                prd.update_product(txtnme.Text, Convert.ToInt32(txtqte.Text), txtpshr.Text, txtpg.Text, txtpb.Text, txtmsthlk.Text, txttmd.Text, byteimage, ID, comboBox1.Text, combo_stores.Text, txt_serial.Text, GetSerialNumberMode());
                 //string single = purch.get_single_purchase_id(txtnme.Text).Rows[0][0].ToString();
                 MessageBox.Show("تم التعديل بنجاح", "عمليه التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frm_products.getmainform.dataGridView1.DataSource = prd.get_all_products();
@@ -402,8 +404,20 @@ namespace WindowsFormsApplication2.PL
       {
       }
 
+        private int GetSerialNumberMode()
+        {
+            return radio_serial_one_per_piece.Checked ? 1 : 0;
+        }
+
       private void frm_add_product_Load(object sender, EventArgs e)
       {
+            if (!string.IsNullOrEmpty(ID))
+            {
+                int mode = SerialNumberModeForEdit;
+                if (mode == 0) mode = prd.GetProductSerialNumberMode(ID);
+                radio_serial_one_per_product.Checked = (mode == 0);
+                radio_serial_one_per_piece.Checked = (mode == 1);
+            }
             txt_serial.Focus();
         }
 

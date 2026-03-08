@@ -33,9 +33,9 @@ namespace WindowsFormsApplication2.PL
         {
             PL.frm_add_user frm = new frm_add_user();
             frm.txtid.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            frm.txtpsrd.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            frm.txtpsrdconfirm.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            frm.txttotalname.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            //frm.txtpsrd.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            //frm.txtpsrdconfirm.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            frm.txttotalname.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
 
             frm.btnadd.Text = "تعديل";
             frm.ShowDialog();

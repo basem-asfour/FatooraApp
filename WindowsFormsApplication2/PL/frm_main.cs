@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -206,6 +206,12 @@ namespace WindowsFormsApplication2.PL
         private void ادارةالاصنافToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_products frm = new frm_products();
+            frm.Show();
+        }
+
+        private void إدارةسيريالاتالأصنافToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_product_serials frm = new frm_product_serials();
             frm.Show();
         }
 

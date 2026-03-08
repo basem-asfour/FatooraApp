@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +24,7 @@ namespace WindowsFormsApplication2.PL
         DataTable dt2 = new DataTable();
 
         BL.cls_products product = new BL.cls_products();
+        BL.cls_product_serials prdSerials = new BL.cls_product_serials();
         void calctotalprice()
         {
             if (string.IsNullOrEmpty(txtds.Text))
@@ -143,6 +144,24 @@ namespace WindowsFormsApplication2.PL
             txt_notes.Clear();
             txt_serial.Clear();
         }
+        List<string> GetExcludeSerialsFromGrid()
+        {
+            var list = new List<string>();
+            for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
+            {
+                var cell = dgvproducts.Rows[i].Cells.Count > 7 ? dgvproducts.Rows[i].Cells[7].Value : null;
+                if (cell != null && cell != DBNull.Value && !string.IsNullOrEmpty(cell.ToString()))
+                {
+                    foreach (var s in cell.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        var t = s.Trim();
+                        if (!string.IsNullOrEmpty(t) && !list.Contains(t))
+                            list.Add(t);
+                    }
+                }
+            }
+            return list;
+        }
         void createdatatable()
         {
             dt.Columns.Add("كود الصنف");
@@ -152,9 +171,11 @@ namespace WindowsFormsApplication2.PL
             dt.Columns.Add("(%)الخصم");
             dt.Columns.Add("سعر المستهلك");
             dt.Columns.Add("السعر الكلي");
+            dt.Columns.Add("serials"); // Hidden: comma-separated serials for OnePerPiece mode
 
             dgvproducts.DataSource = dt;
-
+            if (dgvproducts.Columns.Count > 7)
+                dgvproducts.Columns[7].Visible = false;
         }
         //عندك خطا هنا صلحه بتاع تظبيط عواميد الداتا جريد فيو
         void resizedgv()
@@ -167,11 +188,8 @@ namespace WindowsFormsApplication2.PL
             this.dgvproducts.Columns[4].Width = 80;
             this.dgvproducts.Columns[5].Width = 105;
             this.dgvproducts.Columns[6].Width = 125;
-
-
-
-
-
+            if (this.dgvproducts.Columns.Count > 7)
+                this.dgvproducts.Columns[7].Visible = false;
         }
         DataTable dt_combobox;
         DataTable dt_mndob;
@@ -211,12 +229,8 @@ namespace WindowsFormsApplication2.PL
 
         private void Frm_orders_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'adham_testDataSet.get_all_products' table. You can move, or remove it, as needed.
-            //this.get_all_productsTableAdapter.Fill(this.adham_testDataSet.get_all_products);
-            //كود الكومبو بوكس وانت عملتله البروك ده حاول تظبته
-            //  comboBox1.DataSource = product.select_prd_nme_for_compo();
+            dataGridView1.SendToBack();
             txt_serial.Focus();
-      
         }
         public void demo()
         {
@@ -361,10 +375,10 @@ namespace WindowsFormsApplication2.PL
 
                 for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
                 {
-                    if (dgvproducts.Rows[i].Cells[0].Value.ToString() == txtid.Text)
+                    if (dgvproducts.Rows[i].Cells[0].Value != null && dgvproducts.Rows[i].Cells[0].Value.ToString() == txtid.Text)
                     {
                         MessageBox.Show("تم ادخال هذا المنتج مسبقا", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //return;
+                        return;
                     }
                 }
 
@@ -376,6 +390,29 @@ namespace WindowsFormsApplication2.PL
                         return;
                     }
                 }
+
+                int qte = 0;
+                int.TryParse(txtqte.Text, out qte);
+                if (qte < 1)
+                {
+                    MessageBox.Show("الكمية يجب أن تكون أكبر من صفر", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                object serialsForCell7 = DBNull.Value;
+                int mode = product.GetProductSerialNumberMode(txtid.Text);
+                if (mode == 1)
+                {
+                    var excludeSerials = GetExcludeSerialsFromGrid();
+                    var frm = new frm_select_serial_for_order(Convert.ToInt32(txtid.Text), qte, excludeSerials);
+                    frm.ShowDialog();
+                    if (frm.DialogResult != DialogResult.OK || string.IsNullOrEmpty(frm.SelectedSerialsCommaSeparated))
+                    {
+                        return;
+                    }
+                    serialsForCell7 = frm.SelectedSerialsCommaSeparated;
+                }
+
                 DataRow r = dt.NewRow();
                 r[0] = txtid.Text;
                 r[1] = txtnme.Text;
@@ -384,6 +421,7 @@ namespace WindowsFormsApplication2.PL
                 r[4] = txtds.Text;
                 r[5] = txtpmsthlk.Text;
                 r[6] = txttp.Text;
+                r[7] = serialsForCell7;
                 dt.Rows.Add(r);
                 dgvproducts.DataSource = dt;
                 ///////////////////
@@ -433,16 +471,15 @@ namespace WindowsFormsApplication2.PL
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-
             for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
             {
-                if (dgvproducts.Rows[i].Cells[0].Value.ToString() == txtid.Text)
+                if (dgvproducts.Rows[i].Cells[0].Value != null && dgvproducts.Rows[i].Cells[0].Value.ToString() == txtid.Text)
                 {
                     MessageBox.Show("تم ادخال هذا المنتج مسبقا", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   // return;
+                    return;
                 }
             }
-            if (radio_raseed.Checked==true || radio_not_raseed.Checked==false && radio_raseed.Checked==false)
+            if (radio_raseed.Checked == true || radio_not_raseed.Checked == false && radio_raseed.Checked == false)
             {
                 if (order.verifyqte(Convert.ToInt32(txtid.Text), Convert.ToInt32(txtqte.Text)).Rows.Count < 1)
                 {
@@ -450,38 +487,49 @@ namespace WindowsFormsApplication2.PL
                     return;
                 }
             }
-            //else if (radio_not_raseed.Checked==true)
-            //{
-                
-            //}
-            
-          
 
-                DataRow r = dt.NewRow();
-                r[0] = txtid.Text;
-                r[1] = txtnme.Text;
-                r[2] = txtprice.Text;
-                r[3] = txtqte.Text;
-                r[4] = txtds.Text;
-                r[5] = txtpmsthlk.Text;
-                r[6] = txttp.Text;
+            int qte = 0;
+            int.TryParse(txtqte.Text, out qte);
+            if (qte < 1)
+            {
+                MessageBox.Show("الكمية يجب أن تكون أكبر من صفر", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            object serialsForCell7 = DBNull.Value;
+            int mode = product.GetProductSerialNumberMode(txtid.Text);
+            if (mode == 1)
+            {
+                var excludeSerials = GetExcludeSerialsFromGrid();
+                var frm = new frm_select_serial_for_order(Convert.ToInt32(txtid.Text), qte, excludeSerials);
+                frm.ShowDialog();
+                if (frm.DialogResult != DialogResult.OK || string.IsNullOrEmpty(frm.SelectedSerialsCommaSeparated))
+                {
+                    return;
+                }
+                serialsForCell7 = frm.SelectedSerialsCommaSeparated;
+            }
+
+            DataRow r = dt.NewRow();
+            r[0] = txtid.Text;
+            r[1] = txtnme.Text;
+            r[2] = txtprice.Text;
+            r[3] = txtqte.Text;
+            r[4] = txtds.Text;
+            r[5] = txtpmsthlk.Text;
+            r[6] = txttp.Text;
+            r[7] = serialsForCell7;
                 dt.Rows.Add(r);
 
                 DataRow r2 = dt2.NewRow();
                 r2[0] = txt_price_shraa.Text;
                 dt2.Rows.Add(r2);
                 dataGridView1.DataSource = dt2;
-            //من عندي
                 if (type == "save new")
-                {
-
-                dgvproducts.DataSource = dt;
-            }
-            else
-            {
-                dgvproducts.Rows.Add(dt);
-            }
-            resizedgv();
+                    dgvproducts.DataSource = dt;
+                else
+                    dgvproducts.Rows.Add(dt);
+                resizedgv();
             clearboxes();
 
             txtmg.Text = (from DataGridViewRow row in dgvproducts.Rows
@@ -631,10 +679,13 @@ namespace WindowsFormsApplication2.PL
             //اضافه منتجات الفاتوره وتفاصيلها
             for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
             {
+                string lineSerials = null;
+                if (dgvproducts.Rows[i].Cells.Count > 7 && dgvproducts.Rows[i].Cells[7].Value != null && dgvproducts.Rows[i].Cells[7].Value != DBNull.Value)
+                    lineSerials = dgvproducts.Rows[i].Cells[7].Value.ToString();
                 order.add_order_details(Convert.ToInt32(txtorderid.Text), Convert.ToInt32(dgvproducts.Rows[i].Cells[0].Value),
                     Convert.ToInt32(dgvproducts.Rows[i].Cells[3].Value), dgvproducts.Rows[i].Cells[2].Value.ToString(),
-                   Convert.ToDouble(dgvproducts.Rows[i].Cells[4].Value), dgvproducts.Rows[i].Cells[5].Value.ToString(), dgvproducts.Rows[i].Cells[6].Value.ToString(),
-                    txtmsdd.Text, txtmtbki.Text);  
+                    Convert.ToDouble(dgvproducts.Rows[i].Cells[4].Value), dgvproducts.Rows[i].Cells[5].Value.ToString(), dgvproducts.Rows[i].Cells[6].Value.ToString(),
+                    txtmsdd.Text, txtmtbki.Text, lineSerials);
             }
             MessageBox.Show("تم حفظ البيع بنجاح", "عمليه الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             cleardata();
@@ -1190,115 +1241,89 @@ namespace WindowsFormsApplication2.PL
 
         private void txt_serial_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && !string.IsNullOrEmpty(txt_serial.Text))
+            if (e.KeyCode != Keys.Enter || string.IsNullOrEmpty(txt_serial.Text)) return;
+
+            var prd = product.get_prd_by_serial(txt_serial.Text);
+            if (prd.Rows.Count == 0)
             {
-                var prd = product.get_prd_by_serial(txt_serial.Text);
-                if (prd.Rows.Count > 0)
+                MessageBox.Show("لم يتم ادراج هذا الصنف من قبل ", "صنف غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txt_serial.Clear();
+                txt_serial.Focus();
+                return;
+            }
+
+            int serialNumberMode = 0;
+            if (prd.Columns.Count > 7 && prd.Rows[0][7] != null && prd.Rows[0][7] != DBNull.Value)
+                int.TryParse(prd.Rows[0][7].ToString(), out serialNumberMode);
+
+            txt_price_shraa.Text = prd.Rows[0][3].ToString();
+            if (radioButtonamel.Checked == true)
+                txtprice.Text = prd.Rows[0][4].ToString();
+            else if (radioButton2not3mel.Checked == true)
+                txtprice.Text = prd.Rows[0][5].ToString();
+
+            txtnme.Text = prd.Rows[0][1].ToString();
+            txtpmsthlk.Text = prd.Rows[0][6].ToString();
+            txtid.Text = prd.Rows[0][0].ToString();
+            txtqte.Text = "1";
+            txtds.Text = "0";
+            calctotalprice();
+            txt_total_5sm.Text = "0";
+            calctotalprice_afterTotal_5sm();
+
+            string scannedSerial = txt_serial.Text.Trim();
+
+            if (serialNumberMode == 1) // OnePerPiece: validate serial
+            {
+                if (prdSerials.IsSerialSold(scannedSerial))
                 {
-
-                    txt_price_shraa.Text = prd.Rows[0][3].ToString();
-                    if (radioButtonamel.Checked == true)
+                    MessageBox.Show("هذا السيريال تم بيعه مسبقاً", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_serial.Clear();
+                    txt_serial.Focus();
+                    return;
+                }
+                var availableDt = prdSerials.GetAvailableSerialsForProduct(Convert.ToInt32(txtid.Text));
+                bool serialFound = false;
+                if (availableDt != null)
+                    foreach (DataRow row in availableDt.Rows)
+                        if (row["serial"] != null && row["serial"].ToString().Trim().Equals(scannedSerial, StringComparison.OrdinalIgnoreCase))
+                        { serialFound = true; break; }
+                if (!serialFound)
+                {
+                    MessageBox.Show("هذا السيريال غير متاح لهذا الصنف (تم بيعه أو غير مسجل)", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_serial.Clear();
+                    txt_serial.Focus();
+                    return;
+                }
+                for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
+                {
+                    var serialsCell = dgvproducts.Rows[i].Cells.Count > 7 ? dgvproducts.Rows[i].Cells[7].Value : null;
+                    if (serialsCell != null && !string.IsNullOrEmpty(serialsCell.ToString()))
                     {
-                        txtprice.Text = prd.Rows[0][4].ToString();
-
-                    }
-                    else if (radioButton2not3mel.Checked == true)
-                    {
-                        txtprice.Text = prd.Rows[0][5].ToString();
-
-                    }
-
-                    txtnme.Text = prd.Rows[0][1].ToString();
-                    txtpmsthlk.Text = prd.Rows[0][6].ToString();
-                    txtid.Text = prd.Rows[0][0].ToString();
-                    txtqte.Text = "1";
-                    txtds.Text = "0";
-                    calctotalprice();
-                    //if (radioButton_nesba.Checked == true || radioButton_nesba.Checked == false && radioButton_number.Checked == false)
-                    //{
-                    //    calctotalprice_afterTotal_5sm();
-                    //}
-                    //else
-                    //{
-                    //    calcTotalPriceAfter_number_5sm();
-                    //}
-                    txt_total_5sm.Text = "0";
-                    calctotalprice_afterTotal_5sm();
-
-                    ///////////////////////////////////////////////////////////////////////////////
-
-
-                    for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
-                    {
-                        if (dgvproducts.Rows[i].Cells[0].Value.ToString() == txtid.Text)
+                        var serials = serialsCell.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (serials.Any(s => s.Trim() == scannedSerial))
                         {
-                            dgvproducts.Rows[i].Cells[3].Value = Convert.ToInt32(dgvproducts.Rows[i].Cells[3].Value) + 1;
-                            dgvproducts.Rows[i].Cells[6].Value = Convert.ToDouble(dgvproducts.Rows[i].Cells[6].Value) + Convert.ToDouble(txtprice.Text);
-                            txtmg.Text = (from DataGridViewRow row in dgvproducts.Rows
-                                          where row.Cells[6].FormattedValue.ToString() != string.Empty
-                                          select Convert.ToDouble(row.Cells[6].FormattedValue)).Sum().ToString();
-                            if (radioButton2not3mel.Checked == true)
-                            {
-                                txtmsdd.Text = txt_total_after_5sm.Text;
-                                txtmtbki.Text = "0";
-                            }
-                            else if (radioButtonamel.Checked == true)
-                            {
-                                txtmsdd.Focus();
-
-                            }
+                            MessageBox.Show("تم مسح هذا السيريال مسبقاً في هذه الفاتورة", "سيريال مكرر", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             txt_serial.Clear();
-
-                            clearboxes();
                             txt_serial.Focus();
-                            //MessageBox.Show("تم ادخال هذا المنتج مسبقا", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
-                    if (radio_raseed.Checked == true || radio_not_raseed.Checked == false && radio_raseed.Checked == false)
+                }
+            }
+
+            for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
+            {
+                if (dgvproducts.Rows[i].Cells[0].Value != null && dgvproducts.Rows[i].Cells[0].Value.ToString() == txtid.Text)
+                {
+                    if (serialNumberMode == 1) // OnePerPiece: one scan = one piece, append serial
                     {
-                        if (order.verifyqte(Convert.ToInt32(txtid.Text), Convert.ToInt32(txtqte.Text)).Rows.Count < 1)
-                        {
-                            MessageBox.Show("الكميه المدخله لهذا الصنف غير متوفره ", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                            return;
-
-                        }
+                        var serialsCell = dgvproducts.Rows[i].Cells.Count > 7 ? dgvproducts.Rows[i].Cells[7].Value : null;
+                        string existingSerials = (serialsCell != null && serialsCell != DBNull.Value) ? serialsCell.ToString() : "";
+                        dgvproducts.Rows[i].Cells[7].Value = string.IsNullOrEmpty(existingSerials) ? scannedSerial : existingSerials + "," + scannedSerial;
                     }
-                    //else if (radio_not_raseed.Checked==true)
-                    //{
-
-                    //}
-
-
-
-                    DataRow r = dt.NewRow();
-                    r[0] = txtid.Text;
-                    r[1] = txtnme.Text;
-                    r[2] = txtprice.Text;
-                    r[3] = txtqte.Text;
-                    r[4] = txtds.Text;
-                    r[5] = txtpmsthlk.Text;
-                    r[6] = txttp.Text;
-                    dt.Rows.Add(r);
-
-                    DataRow r2 = dt2.NewRow();
-                    r2[0] = txt_price_shraa.Text;
-                    dt2.Rows.Add(r2);
-                    dataGridView1.DataSource = dt2;
-                    //من عندي
-                    if (type == "save new")
-                    {
-
-                        dgvproducts.DataSource = dt;
-                    }
-                    else
-                    {
-                        dgvproducts.Rows.Add(dt);
-                    }
-                    resizedgv();
-                    clearboxes();
-
+                    dgvproducts.Rows[i].Cells[3].Value = Convert.ToInt32(dgvproducts.Rows[i].Cells[3].Value) + 1;
+                    dgvproducts.Rows[i].Cells[6].Value = Convert.ToDouble(dgvproducts.Rows[i].Cells[6].Value) + Convert.ToDouble(txtprice.Text);
                     txtmg.Text = (from DataGridViewRow row in dgvproducts.Rows
                                   where row.Cells[6].FormattedValue.ToString() != string.Empty
                                   select Convert.ToDouble(row.Cells[6].FormattedValue)).Sum().ToString();
@@ -1308,24 +1333,62 @@ namespace WindowsFormsApplication2.PL
                         txtmtbki.Text = "0";
                     }
                     else if (radioButtonamel.Checked == true)
-                    {
                         txtmsdd.Focus();
-
-                    }
-                    comboBox2.Focus();
-
-
-
+                    txt_serial.Clear();
+                    clearboxes();
+                    txt_serial.Focus();
+                    return;
                 }
-                else
+            }
+            if (radio_raseed.Checked == true || radio_not_raseed.Checked == false && radio_raseed.Checked == false)
+            {
+                if (order.verifyqte(Convert.ToInt32(txtid.Text), Convert.ToInt32(txtqte.Text)).Rows.Count < 1)
                 {
-                    MessageBox.Show("لم يتم ادراج هذا الصنف من قبل ", "صنف غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("الكميه المدخله لهذا الصنف غير متوفره ", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_serial.Clear();
+                    txt_serial.Focus();
+                    return;
                 }
-                txt_serial.Clear();
-                txt_serial.Focus();
-
             }
 
+            DataRow r = dt.NewRow();
+            r[0] = txtid.Text;
+            r[1] = txtnme.Text;
+            r[2] = txtprice.Text;
+            r[3] = txtqte.Text;
+            r[4] = txtds.Text;
+            r[5] = txtpmsthlk.Text;
+            r[6] = txttp.Text;
+            r[7] = (serialNumberMode == 1) ? scannedSerial : (object)DBNull.Value;
+            dt.Rows.Add(r);
+
+            DataRow r2 = dt2.NewRow();
+            r2[0] = txt_price_shraa.Text;
+            dt2.Rows.Add(r2);
+            dataGridView1.DataSource = dt2;
+            if (type == "save new")
+                dgvproducts.DataSource = dt;
+            else
+                dgvproducts.Rows.Add(dt);
+            if (dgvproducts.Columns.Count > 7)
+                dgvproducts.Columns[7].Visible = false;
+            resizedgv();
+            clearboxes();
+
+            txtmg.Text = (from DataGridViewRow row in dgvproducts.Rows
+                          where row.Cells[6].FormattedValue.ToString() != string.Empty
+                          select Convert.ToDouble(row.Cells[6].FormattedValue)).Sum().ToString();
+            if (radioButton2not3mel.Checked == true)
+            {
+                txtmsdd.Text = txt_total_after_5sm.Text;
+                txtmtbki.Text = "0";
+            }
+            else if (radioButtonamel.Checked == true)
+                txtmsdd.Focus();
+            comboBox2.Focus();
+
+            txt_serial.Clear();
+            txt_serial.Focus();
         }
     }
     }

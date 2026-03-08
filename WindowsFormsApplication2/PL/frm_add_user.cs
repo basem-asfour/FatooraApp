@@ -50,7 +50,7 @@ namespace WindowsFormsApplication2.PL
                 return;
             }
             
-                if (btnadd.Text=="اضافة")
+                if (btnadd.Text== "إضافة")
                 {
                     
                 

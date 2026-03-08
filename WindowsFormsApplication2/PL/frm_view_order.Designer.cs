@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2.PL
+namespace WindowsFormsApplication2.PL
 {
     partial class frm_view_order
     {
@@ -46,6 +46,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDocumentThermal = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.txt_notes = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.button_thermal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -118,16 +120,17 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.SpringGreen;
+            this.button1.BackColor = System.Drawing.Color.Navy;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_page_setup_48;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(183, 651);
+            this.button1.Location = new System.Drawing.Point(174, 641);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 46);
+            this.button1.Size = new System.Drawing.Size(208, 46);
             this.button1.TabIndex = 0;
-            this.button1.Text = "طباعة";
+            this.button1.Text = "طباعة A4";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -135,9 +138,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(15, 23);
+            this.label1.Location = new System.Drawing.Point(9, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 23);
             this.label1.TabIndex = 1;
@@ -156,6 +159,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 22);
             this.dataGridView1.Name = "dataGridView1";
@@ -166,9 +170,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(8, 193);
             this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(948, 387);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
@@ -187,7 +193,7 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Location = new System.Drawing.Point(7, 580);
             this.label2.Name = "label2";
@@ -209,7 +215,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label6.Location = new System.Drawing.Point(287, 18);
@@ -222,7 +228,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label7.Location = new System.Drawing.Point(9, 48);
@@ -239,9 +245,9 @@
             this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_close_48;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(672, 651);
+            this.button2.Location = new System.Drawing.Point(517, 704);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 46);
+            this.button2.Size = new System.Drawing.Size(140, 43);
             this.button2.TabIndex = 14;
             this.button2.Text = "خروج";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,7 +277,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Location = new System.Drawing.Point(287, 49);
             this.label5.Name = "label5";
@@ -319,6 +325,10 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // printDocumentThermal
+            // 
+            this.printDocumentThermal.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentThermal_PrintPage);
+            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -344,12 +354,13 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.Violet;
+            this.button3.BackColor = System.Drawing.Color.Crimson;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = global::WindowsFormsApplication2.Properties.Resources.remove_item1;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.Location = new System.Drawing.Point(329, 651);
+            this.button3.Location = new System.Drawing.Point(401, 651);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(153, 47);
             this.button3.TabIndex = 21;
@@ -365,9 +376,9 @@
             this.button4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = global::WindowsFormsApplication2.Properties.Resources.Package_delete;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(488, 651);
+            this.button4.Location = new System.Drawing.Point(564, 651);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(178, 46);
+            this.button4.Size = new System.Drawing.Size(209, 46);
             this.button4.TabIndex = 22;
             this.button4.Text = "حذف الصنف المحدد";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -376,7 +387,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Linen;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(252)))), ((int)(((byte)(245)))));
             this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.groupBox7);
@@ -478,7 +489,7 @@
             // 
             // label18
             // 
-            this.label18.BackColor = System.Drawing.Color.Red;
+            this.label18.BackColor = System.Drawing.Color.PowderBlue;
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Location = new System.Drawing.Point(197, 70);
             this.label18.Name = "label18";
@@ -538,7 +549,7 @@
             // 
             // label15
             // 
-            this.label15.BackColor = System.Drawing.Color.Red;
+            this.label15.BackColor = System.Drawing.Color.PowderBlue;
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label15.Location = new System.Drawing.Point(299, 70);
             this.label15.Name = "label15";
@@ -560,7 +571,7 @@
             // 
             // label14
             // 
-            this.label14.BackColor = System.Drawing.Color.Red;
+            this.label14.BackColor = System.Drawing.Color.PowderBlue;
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.Location = new System.Drawing.Point(379, 70);
             this.label14.Name = "label14";
@@ -581,7 +592,7 @@
             // 
             // label13
             // 
-            this.label13.BackColor = System.Drawing.Color.Red;
+            this.label13.BackColor = System.Drawing.Color.PowderBlue;
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label13.Location = new System.Drawing.Point(462, 70);
             this.label13.Name = "label13";
@@ -600,7 +611,7 @@
             // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.Red;
+            this.label12.BackColor = System.Drawing.Color.PowderBlue;
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Location = new System.Drawing.Point(540, 70);
             this.label12.Name = "label12";
@@ -620,8 +631,9 @@
             // 
             // label11
             // 
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label11.BackColor = System.Drawing.Color.Purple;
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label11.Location = new System.Drawing.Point(72, 70);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(125, 26);
@@ -640,7 +652,7 @@
             // 
             // label10
             // 
-            this.label10.BackColor = System.Drawing.Color.Red;
+            this.label10.BackColor = System.Drawing.Color.PowderBlue;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Location = new System.Drawing.Point(737, 70);
             this.label10.Name = "label10";
@@ -672,7 +684,7 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -746,7 +758,7 @@
             // 
             // label8
             // 
-            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label8.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -763,11 +775,11 @@
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label9.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(781, 663);
+            this.label9.Location = new System.Drawing.Point(781, 671);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(162, 35);
             this.label9.TabIndex = 49;
@@ -843,7 +855,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Location = new System.Drawing.Point(577, 49);
             this.label17.Name = "label17";
@@ -864,7 +876,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label19.Location = new System.Drawing.Point(578, 18);
@@ -887,7 +899,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label20.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label20.Location = new System.Drawing.Point(582, 49);
@@ -909,7 +921,7 @@
             // 
             // label21
             // 
-            this.label21.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label21.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label21.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -935,7 +947,7 @@
             // 
             // label22
             // 
-            this.label22.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label22.Location = new System.Drawing.Point(121, 580);
             this.label22.Name = "label22";
@@ -946,7 +958,7 @@
             // 
             // label24
             // 
-            this.label24.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(238)))), ((int)(((byte)(250)))));
             this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label24.Location = new System.Drawing.Point(255, 580);
             this.label24.Name = "label24";
@@ -978,11 +990,30 @@
             this.label16.Visible = false;
             this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
+            // button_thermal
+            // 
+            this.button_thermal.BackColor = System.Drawing.Color.Navy;
+            this.button_thermal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_thermal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_thermal.ForeColor = System.Drawing.Color.White;
+            this.button_thermal.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_page_setup_48;
+            this.button_thermal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_thermal.Location = new System.Drawing.Point(177, 693);
+            this.button_thermal.Name = "button_thermal";
+            this.button_thermal.Size = new System.Drawing.Size(208, 43);
+            this.button_thermal.TabIndex = 66;
+            this.button_thermal.Text = "طباعة thermal";
+            this.button_thermal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_thermal.UseVisualStyleBackColor = false;
+            this.button_thermal.Click += new System.EventHandler(this.button_thermal_Click);
+            // 
             // frm_view_order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 730);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(252)))));
+            this.ClientSize = new System.Drawing.Size(1001, 744);
+            this.Controls.Add(this.button_thermal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_total_after_transport);
@@ -1073,6 +1104,7 @@
         public System.Windows.Forms.DataGridView dataGridView2;
         public System.Windows.Forms.DataGridView dataGridView3;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument printDocumentThermal;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         public System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Button button3;
@@ -1129,5 +1161,6 @@
         private System.Windows.Forms.Label label24;
         public System.Windows.Forms.TextBox txt_notes;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button button_thermal;
     }
 }

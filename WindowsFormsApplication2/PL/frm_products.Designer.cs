@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2.PL
+namespace WindowsFormsApplication2.PL
 {
     partial class frm_products
     {
@@ -34,6 +34,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_serials = new System.Windows.Forms.Button();
             this.txtQunts = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -122,7 +123,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBox2.Controls.Add(this.button_serials);
             this.groupBox2.Controls.Add(this.txtQunts);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button8);
@@ -146,6 +148,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "العمليات المتاحة";
             // 
+            // button_serials
+            // 
+            this.button_serials.BackColor = System.Drawing.Color.MintCream;
+            this.button_serials.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_serials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_serials.Font = new System.Drawing.Font("Arabic Typesetting", 16F, System.Drawing.FontStyle.Bold);
+            this.button_serials.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_barcode_48;
+            this.button_serials.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_serials.Location = new System.Drawing.Point(844, 121);
+            this.button_serials.Margin = new System.Windows.Forms.Padding(4);
+            this.button_serials.Name = "button_serials";
+            this.button_serials.Size = new System.Drawing.Size(215, 41);
+            this.button_serials.TabIndex = 28;
+            this.button_serials.Text = "إدارة السيريالات";
+            this.button_serials.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_serials.UseVisualStyleBackColor = false;
+            this.button_serials.Click += new System.EventHandler(this.button_serials_Click);
+            this.button_serials.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.button_serials.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            // 
             // txtQunts
             // 
             this.txtQunts.Location = new System.Drawing.Point(13, 34);
@@ -162,10 +184,10 @@
             this.button3.Font = new System.Drawing.Font("Arabic Typesetting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_page_setup_48;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.Location = new System.Drawing.Point(844, 90);
+            this.button3.Location = new System.Drawing.Point(844, 74);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(215, 73);
+            this.button3.Size = new System.Drawing.Size(215, 42);
             this.button3.TabIndex = 8;
             this.button3.Text = "طباعه نسخه مكتب";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -302,10 +324,10 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Image = global::WindowsFormsApplication2.Properties.Resources.icons8_print_48;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(844, 23);
+            this.button2.Location = new System.Drawing.Point(844, 24);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(215, 69);
+            this.button2.Size = new System.Drawing.Size(215, 47);
             this.button2.TabIndex = 1;
             this.button2.Text = "طباعه كل الاصناف ";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -493,7 +515,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox3.BackColor = System.Drawing.Color.SteelBlue;
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.pictureBox1);
@@ -641,6 +663,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_serials;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.DataGridView dataGridView1;
