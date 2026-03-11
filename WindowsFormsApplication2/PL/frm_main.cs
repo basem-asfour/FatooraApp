@@ -70,7 +70,14 @@ namespace WindowsFormsApplication2.PL
             groupBox1.Visible=false;
             //label2.Text =label2.Text +"        ......     "+ DateTime.UtcNow.ToShortDateString();
             label3.Text = DateTime.UtcNow.ToLongDateString();
-            dataGridView1.DataSource = order.search_new_orders_bydate(DateTime.Today.ToShortDateString());
+            try
+            {
+                dataGridView1.DataSource = order.search_new_orders_bydate(DateTime.Today.ToShortDateString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("خطأ في الاتصال بقاعدة البيانات:\n" + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             dataGridView1.Visible = false;
             if (Program.isDemo)
             {

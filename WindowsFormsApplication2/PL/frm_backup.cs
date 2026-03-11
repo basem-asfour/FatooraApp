@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 using WindowsFormsApplication2.UI;
 
 namespace WindowsFormsApplication2.PL
@@ -15,10 +16,7 @@ namespace WindowsFormsApplication2.PL
     public partial class frm_backup : Form
     {
         
-      //  SqlConnection con = new SqlConnection(@"server=N5BA-PC\SQLEXPRESS;Database=mostafa_helth;Integrated security=true");
-       // SqlConnection con = new SqlConnection(@"server=PC-PC\SQLEXPRESS; database=mostafa_helth; integrated security=true");
-        //SqlConnection con = new SqlConnection(@"server=./; database=mostafa_helth; integrated security=true");
-        SqlConnection con = new SqlConnection(@"server=.\SQLEXPRESS; database=mostafa_helth; integrated security=true");
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["FatooraDB"].ConnectionString);
         SqlCommand cmd;
         public frm_backup()
         {

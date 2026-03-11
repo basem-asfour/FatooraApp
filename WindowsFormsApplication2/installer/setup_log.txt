@@ -1,0 +1,28 @@
+﻿2026-03-08 22:46:48 - === FatooraApp Database Setup Started ===
+2026-03-08 22:46:48 - Checking database...
+2026-03-08 22:46:48 - Database ready.
+2026-03-08 22:46:49 - Running schema script...
+2026-03-08 22:46:49 - Found 439 SQL batches to execute...
+2026-03-08 22:46:49 - SQL Error: Exception calling "ExecuteNonQuery" with "0" argument(s): "Incorrect syntax near 'Msg'." | Batch: -- Table: order_details
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'order_details')
+BEGIN
+    CREATE TABLE [dbo].[order_details] (
+        [رقم الفاتورة] INT NULL
+       ,[كود الصنف] INT NULL
+       ,[الكميه] INT NULL
+       ,[السعر] VARCHAR(50) NULL
+       ,[الخصم] FLOAT NULL
+   
+2026-03-08 22:46:50 - Batches: 435 OK, 1 errors.
+2026-03-08 22:46:50 - Schema setup complete.
+2026-03-08 22:46:50 - Inserting seed data...
+2026-03-08 22:46:50 - SQL Error: Exception calling "ExecuteNonQuery" with "0" argument(s): "Invalid column name 'months'." | Batch: -- 3. Seed systemType (licensed, not demo)
+IF NOT EXISTS (SELECT 1 FROM [dbo].[systemType])
+BEGIN
+    INSERT INTO [dbo].[systemType] (firstDate, months, status, isValid)
+    VALUES (GETUTCDATE(), 0, N'licensed', 1);
+    PRINT 'Inserted default systemType: licensed';
+END
+2026-03-08 22:46:50 - Batches: 3 OK, 1 errors.
+2026-03-08 22:46:50 - Seed data complete.
+2026-03-08 22:46:50 - === Database Setup Completed Successfully ===

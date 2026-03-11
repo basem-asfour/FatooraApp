@@ -11,6 +11,7 @@
     <AssemblyName>WindowsFormsApplication2</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Resources\logo_trans.ico</ApplicationIcon>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -82,6 +83,7 @@
       <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp.Charting-gdi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -737,6 +739,8 @@
     <None Include="adham_testDataSet.xss">
       <DependentUpon>adham_testDataSet.xsd</DependentUpon>
     </None>
+    <None Include="installer\DatabaseSetup.bat" />
+    <None Include="installer\FatooraApp.iss" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1105,6 +1109,8 @@
     <None Include="Resources\icons8-click-&amp;-collect-48.png" />
     <None Include="Resources\icons8-barcode-reader-48.png" />
     <None Include="Resources\icons8-barcode-48.png" />
+    <Content Include="installer\export_schema.sql" />
+    <Content Include="installer\seed_data.sql" />
     <Content Include="Resources\logo_trans.ico" />
     <None Include="Resources\logo_trans1.ico" />
     <None Include="Resources\logo_trans_ElShaker.png" />

@@ -434,7 +434,7 @@ namespace WindowsFormsApplication2.PL
             this.dgvproducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvproducts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvproducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvproducts.ColumnHeadersVisible = false;
+            this.dgvproducts.ColumnHeadersVisible = true;
             this.dgvproducts.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvproducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.dgvproducts.Location = new System.Drawing.Point(166, 118);

@@ -447,10 +447,10 @@ namespace WindowsFormsApplication2.PL
         {
             try
             {
-                int w58 = (int)(58f / 25.4f * 100f);
+                int w80 = (int)(80f / 25.4f * 100f);
                 try
                 {
-                    printDocumentThermal.PrinterSettings.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("58mm Thermal", w58, 5000);
+                    printDocumentThermal.PrinterSettings.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("80mm Thermal", w80, 5000);
                 }
                 catch { }
                 PrintDialog dlg = new PrintDialog { Document = printDocumentThermal };
@@ -465,28 +465,28 @@ namespace WindowsFormsApplication2.PL
 
         private void printDocumentThermal_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            float pageW = e.PageBounds.Width > 0 ? e.PageBounds.Width : 220f;
-            float W = Math.Min(215f, pageW - 10f);
+            float pageW = e.PageBounds.Width > 0 ? e.PageBounds.Width : 302f;
+            float W = Math.Min(302f, pageW - 10f);
             float x = 5f, y = 4f;
-            Font fontTitle = new Font("Arial", 10, FontStyle.Bold);
-            Font fontBody = new Font("Arial", 8, FontStyle.Regular);
-            Font fontSmall = new Font("Arial", 7, FontStyle.Regular);
+            Font fontTitle = new Font("Arial", 12, FontStyle.Bold);
+            Font fontBody = new Font("Arial", 9, FontStyle.Regular);
+            Font fontSmall = new Font("Arial", 8, FontStyle.Regular);
             StringFormat sfCenter = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near };
             StringFormat sfRight = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Near };
 
             try
             {
-                if (Program.PrintWaterMarkImageSource!=null)
+                if (Program.SharkStoreLogoThermal != null)
                 {
                     try
                     {
-                        using (var logo = new Bitmap(Program.PrintWaterMarkImageSource))
+                        using (var logo = new Bitmap(Program.SharkStoreLogoThermal))
                         {
-                            int maxLogoW = 50;
+                            int maxLogoW = 70;
                             float aspect = (float)logo.Width / logo.Height;
                             int logoW = maxLogoW;
                             int logoH = (int)(logoW / aspect);
-                            if (logoH > 50) { logoH = 50; logoW = (int)(logoH * aspect); }
+                            if (logoH > 70) { logoH = 70; logoW = (int)(logoH * aspect); }
                             float logoX = x + (W - 2 * x - logoW) / 2f;
                             e.Graphics.DrawImage(logo, (int)logoX, (int)y, logoW, logoH);
                             y += logoH + 4f;

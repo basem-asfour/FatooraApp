@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace WindowsFormsApplication2.DAL
 {
@@ -16,10 +17,7 @@ namespace WindowsFormsApplication2.DAL
         public DATAaccesslayer()
         {
 
-          // sqlconnection = new SqlConnection(@"server=N5BA-PC\SQLEXPRESS; database=mostafa_helth; integrated security=true");//صعيد
-           // sqlconnection = new SqlConnection(@"server=N5BA-PC\SQLEXPRESS; database=mostafa_helth2nd; integrated security=true");//صعيد2
-          sqlconnection = new SqlConnection(@"server=./; database=mostafa_helth; integrated security=true");
-          //  sqlconnection = new SqlConnection(@"server=.\SQLEXPRESS; database=mostafa_helth; integrated security=true");
+          sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["FatooraDB"].ConnectionString);
 
             }
 

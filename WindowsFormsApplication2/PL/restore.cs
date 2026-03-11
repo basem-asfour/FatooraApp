@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WindowsFormsApplication2.PL
 {
     public partial class restore : Form
     {
-        SqlConnection con = new SqlConnection(@"server=./;Database=master;Integrated security=true");
+        SqlConnection con = new SqlConnection(
+            new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["FatooraDB"].ConnectionString)
+            { InitialCatalog = "master" }.ConnectionString);
         SqlCommand cmd;
         SqlCommand New_cmd;
         SqlCommand New_cmd2;

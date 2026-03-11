@@ -393,6 +393,16 @@ namespace WindowsFormsApplication2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_4t110l4t110l4t11 {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_4t110l4t110l4t11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_add_shopping_cart_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-shopping-cart-48", resourceCulture);

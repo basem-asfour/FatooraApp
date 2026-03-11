@@ -125,8 +125,9 @@ namespace WindowsFormsApplication2.PL
             txtcstpho.Clear();
             txtcstadrs.Clear();
             clearboxes();
-            dt.Clear();
             dgvproducts.DataSource = null;
+            dt = new DataTable();
+            createdatatable();
             txttp.Clear();
             txtmsdd.Clear();
             txtmtbki.Clear();
@@ -171,11 +172,9 @@ namespace WindowsFormsApplication2.PL
             dt.Columns.Add("(%)الخصم");
             dt.Columns.Add("سعر المستهلك");
             dt.Columns.Add("السعر الكلي");
-            dt.Columns.Add("serials"); // Hidden: comma-separated serials for OnePerPiece mode
+            dt.Columns.Add("السيريال");
 
             dgvproducts.DataSource = dt;
-            if (dgvproducts.Columns.Count > 7)
-                dgvproducts.Columns[7].Visible = false;
         }
         //عندك خطا هنا صلحه بتاع تظبيط عواميد الداتا جريد فيو
         void resizedgv()
@@ -189,7 +188,7 @@ namespace WindowsFormsApplication2.PL
             this.dgvproducts.Columns[5].Width = 105;
             this.dgvproducts.Columns[6].Width = 125;
             if (this.dgvproducts.Columns.Count > 7)
-                this.dgvproducts.Columns[7].Visible = false;
+                this.dgvproducts.Columns[7].Width = 130;
         }
         DataTable dt_combobox;
         DataTable dt_mndob;
@@ -273,7 +272,11 @@ namespace WindowsFormsApplication2.PL
                 mksab = 0;
                 for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
                 {
-                    mksab += (Convert.ToDouble(dgvproducts.Rows[i].Cells[6].Value) - (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value)) * Convert.ToDouble(dgvproducts.Rows[i].Cells[3].Value));
+                    double cell6 = 0, cell0 = 0, cell3 = 0;
+                    double.TryParse(dgvproducts.Rows[i].Cells[6].Value?.ToString(), out cell6);
+                    double.TryParse(dataGridView1.Rows[i].Cells[0].Value?.ToString(), out cell0);
+                    double.TryParse(dgvproducts.Rows[i].Cells[3].Value?.ToString(), out cell3);
+                    mksab += (cell6 - cell0 * cell3);
                 }
                 txtmksb.Text = mksab.ToString();
 
@@ -283,9 +286,15 @@ namespace WindowsFormsApplication2.PL
                 mksab = 0;
                 for (int i = 0; i < dgvproducts.Rows.Count - 1; i++)
                 {
-                    mksab += (Convert.ToDouble(dgvproducts.Rows[i].Cells[6].Value) - (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value)) * Convert.ToDouble(dgvproducts.Rows[i].Cells[3].Value));
+                    double cell6 = 0, cell0 = 0, cell3 = 0;
+                    double.TryParse(dgvproducts.Rows[i].Cells[6].Value?.ToString(), out cell6);
+                    double.TryParse(dataGridView1.Rows[i].Cells[0].Value?.ToString(), out cell0);
+                    double.TryParse(dgvproducts.Rows[i].Cells[3].Value?.ToString(), out cell3);
+                    mksab += (cell6 - cell0 * cell3);
                 }
-                txtmksb.Text = (mksab-Convert.ToDouble(txt_total_5sm.Text)).ToString();
+                double total5sm = 0;
+                double.TryParse(txt_total_5sm.Text, out total5sm);
+                txtmksb.Text = (mksab - total5sm).ToString();
 
             }
 
@@ -614,11 +623,22 @@ namespace WindowsFormsApplication2.PL
         private void btnsve_Click(object sender, EventArgs e)
         {
             //check values (ماتنساش تفصصها)
-            if (txtorderid.Text == string.Empty || radioButton2not3mel.Checked == false && radioButtonamel.Checked == false || radioButtonamel.Checked == true && txtcstid.Text == string.Empty)
+            if (txtorderid.Text == string.Empty  )
             {
-                MessageBox.Show("يوجد نقص في المعلومات ومن فضلك تاكد من اختياراتك", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("تاكد من اختيار فاتورة جديدة","يوجد نقص في المعلومات ومن فضلك تاكد من اختياراتك", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if ( radioButton2not3mel.Checked == false && radioButtonamel.Checked == false )
+            {
+                MessageBox.Show("اختر نوع العميل", "يوجد نقص في المعلومات ومن فضلك تاكد من اختياراتك", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if ( radioButtonamel.Checked == true && txtcstid.Text == string.Empty)
+            {
+                MessageBox.Show("اختر عميل", "يوجد نقص في المعلومات ومن فضلك تاكد من اختياراتك", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
 
 
             //////عملت ال if دي جديده لما قال عاوز كل يوم يبقي فيه فاتوره واحده
@@ -1254,7 +1274,7 @@ namespace WindowsFormsApplication2.PL
 
             int serialNumberMode = 0;
             if (prd.Columns.Count > 7 && prd.Rows[0][7] != null && prd.Rows[0][7] != DBNull.Value)
-                int.TryParse(prd.Rows[0][7].ToString(), out serialNumberMode);
+                int.TryParse(prd.Rows[0][15].ToString(), out serialNumberMode);
 
             txt_price_shraa.Text = prd.Rows[0][3].ToString();
             if (radioButtonamel.Checked == true)
@@ -1359,7 +1379,7 @@ namespace WindowsFormsApplication2.PL
             r[4] = txtds.Text;
             r[5] = txtpmsthlk.Text;
             r[6] = txttp.Text;
-            r[7] = (serialNumberMode == 1) ? scannedSerial : (object)DBNull.Value;
+            r[7] = scannedSerial;
             dt.Rows.Add(r);
 
             DataRow r2 = dt2.NewRow();
@@ -1370,8 +1390,6 @@ namespace WindowsFormsApplication2.PL
                 dgvproducts.DataSource = dt;
             else
                 dgvproducts.Rows.Add(dt);
-            if (dgvproducts.Columns.Count > 7)
-                dgvproducts.Columns[7].Visible = false;
             resizedgv();
             clearboxes();
 
